@@ -1,0 +1,20 @@
+var calc = {
+    a:5,
+    b:3,
+    addition(){
+        console.log(this.a+this.b);
+    },
+    subtract(){
+        console.log(this.a-this.b);
+    },
+    multiply(){
+        console.log(this.a*this.b);
+    },
+    divide(){
+        console.log(this.a/this.b);
+    }
+}
+calc.addition();
+calc.subtract();
+calc.multiply();
+calc.divide();
