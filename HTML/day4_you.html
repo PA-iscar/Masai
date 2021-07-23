@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        #a-font{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #big-b{
+            height: 600px;
+            width: 1000px;
+            margin: auto;
+        }
+        .thick-box{
+            height: 90px;
+            width: 900px;
+            margin: 10px;
+            background-color: red;
+            float: left;
+        }
+        .small-box{
+            height: 500px;
+            width: 300px;
+            margin: 10px;
+            background-color: lime;
+            float: left;
+        }
+        .big-box{
+            height: 500px;
+            width: 580px;
+            margin: 10px;
+            background-color: teal;
+            float: left;
+        }
+        .clear{
+            clear: both;
+        }
+        #ladder{
+            height: 500px;
+            width: 500px;
+            margin: auto;
+        }
+        .box{
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            float: left;
+            background-color: teal;
+        }
+        #layout{
+            height: 800px;
+            width: 1200px;
+            margin: auto;
+        }
+        .f-pic{
+            height: 290px;
+            width: 400px;
+            margin: auto;
+            background-color: rgba(236, 227, 223, 0.877);
+        }
+        .pic{
+            width: 100px;
+            margin-top: 20px;
+        }
+        .t-center{
+            text-align: center;
+        }
+        .h1{
+            font-size: 30px;
+            font-weight: bold;
+            margin: 20px;
+        }
+        .h2{
+            margin: 10px;
+            font-size: 25px;
+        }
+        .red-c{
+            color: red;
+        }
+        .blue-c{
+            color: blue;
+        }
+        .white-c{
+            color: white;
+        }
+        .float{
+            float: left;
+        }
+        #footer{
+            height: 110px;
+            width: 880px;
+            margin: auto;
+            margin-top: 60px;
+            padding: 10px;
+            background-color: rgb(221, 81, 0);
+        }
+        .t-left{
+            text-align: left;
+        }
+        .s-box{
+            height: 100px;
+            width: 250px;
+        }
+        .float-r{
+            float: right;
+        }
+        .t-right{
+            text-align: right;
+        }
+    </style>
+</head>
+<body id="a-font">
+    <div id="big-b">
+        <div class="thick-box"></div>
+        <div class="small-box"></div>
+        <div class="big-box"></div>
+    </div>
+
+    <div class="clear"></div>
+    <hr/>
+    
+    <div id="ladder">
+        <div class="box"></div>
+        <div class="box clear"></div>
+        <div class="box"></div>
+        <div class="box clear"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box clear"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <div class="clear"></div>
+    <hr/>
+
+    <div id="layout" class="t-center">
+        <div class="f-pic">
+            <img class="pic" src="https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/linus.jpg">
+            <div class="h1 blue-c">Linus Torvalds</div>
+            <div class="h2">The creator of Linux & Git</div>
+        </div>
+
+        <div style="margin-top: 30px; margin-left: 300px;" class="t-center">
+            <img class="pic float" src="https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/khan.jpg">
+            <div class="float" style="width: 530px;">
+                <div class="h1 red-c float">Sal Khan</div>
+                <div class="clear t-left" style="margin-left: 15px;">Salman Khan is the founder of the Khan Academy which has a mission of providing a free world-class education for anyone, anywhere.</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        <div id="footer">
+            <div class="s-box t-left float">
+                <div class="white-c h2">Ken Thompson</div>
+                <div style="margin-top:20px; margin: 10px;">Designed and Implemented the original Unix operating system</div>
+            </div>
+
+            <div style="background-color: black; height: 90px; margin-top: 10px; margin-left: 200px; width: 5px;" class="float"></div>
+
+            <div class="t-right float-r">
+                <div class="white-c h2" style="margin-bottom: 40px;">Dennis Ritchie</div>
+                <div style="margin-top:50px; margin: 10px;">The creator of C Programming Language</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
