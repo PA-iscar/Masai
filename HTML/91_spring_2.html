@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Road</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0%;
+            padding: 0%;
+            background-color: #00c9cd;
+        }
+        .box{
+            /* border:  2px solid red; */
+            width: 45%;
+            height: 30%;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .btn{
+            border: 1px solid white;
+            padding: 4%;
+            position: absolute;
+            top: 75%;
+            left: 15%;
+            width: 60%;
+            border-radius: 5px;
+        }
+        .cont >:nth-child(1){
+            background: url(https://source.unsplash.com/random/270x240);
+            z-index: -1;
+        }
+        .cont >:nth-child(2){
+            background: url(https://source.unsplash.com/user/erondu/270x240);
+            z-index: -1;
+        }
+        .cont >:nth-child(3){
+            background: url(https://source.unsplash.com/collection/190727/270x240);
+            z-index: -1;
+        }
+        .cont >:nth-child(4){
+            background: url(https://source.unsplash.com/270x240/?nature,water);
+            z-index: -1;
+        }
+        .cont >:nth-child(5){
+            background: url(https://source.unsplash.com/270x240/?water);
+            z-index: -1;
+        }
+        .cont >:nth-child(6){
+            background: url(https://source.unsplash.com/270x240/?alchohol);
+            z-index: -1;
+        }
+
+        .cont{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin: auto;
+            /* border: 2px solid red; */
+            width: 600px;
+            height: 800px;
+        }
+        .color-overlay{
+            width: 100%;
+            height: 100%;
+            /* background: #ff6567; */
+            opacity: .8;
+            position: absolute;
+            z-index: -1;
+        }
+        .one{
+            background: #ff6567;
+        }
+        .two{
+            background: #ec0100;
+        }
+        .three{
+            background: #fa0096;
+        }
+        .four{
+            background: #1bc953;
+        }
+        .five{
+            background: #084796;
+        }
+        .six{
+            background: #01b881;
+        }
+        .heading{
+            margin: 8% 3%;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        p{
+            font-size: 14px;
+            margin: 0% 12%;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box">
+            <div class="color-overlay one"></div>
+            <div class="heading">KEEPING CALM</div>
+            <p>In times like these, it's impossible to not panic.Here's a little something to put your mind at ease.</p>
+            <div class="btn">DISCOVER NOW</div>
+        </div>
+        <div class="box">
+            <div class="color-overlay two"></div>
+            <div class="heading">PRODUCTIVITY</div>
+            <p>While we're all practicing self-isolation and social distancing, feeling productive and useful is a challenge. Find all you need to feel productive</p>
+            <div class="btn">DISCOVER NOW</div>
+        </div>
+        <div class="box">
+            <div class="color-overlay three"></div>
+            <div class="heading">SOCIAL</div>
+            <p>It's no secret that we're social creatures. In times of social distance and ways to keep the social interactions going.</p>
+            <div class="btn">DISCOVER NOW</div>
+        </div>
+        <div class="box">
+            <div class="color-overlay four"></div>
+            <div class="heading">COVID-19 FACTS</div>
+            <p> The spread of fake news and misinformation is a virus in itself. Only verified and credible sources here.</p>
+            <div class="btn">DISCOVER NOW</div>
+        </div>
+        <div class="box">
+            <div class="color-overlay five"></div>
+            <div class="heading">BUSINESS ONLINE</div>
+            <p>The world has come to a standstill, doesn't mean work has to. Discover ways to conduct your business online.</p>
+            <div class="btn">DISCOVER NOW</div>
+        </div>
+        <div class="box">
+            <div class="color-overlay six"></div>
+            <div class="heading">HEALTH</div>
+            <p>It's no secret that we're social creatures. In times of social distance and self-isolation, discover ways to keep the social interactions going.</p>
+            <div class="btn">DISCOVER NOW</div>
+        </div>
+    </div>
+</body>
+</html>
