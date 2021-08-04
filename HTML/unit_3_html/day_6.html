@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex box Grid box</title>
+    <style>
+        .cont{
+            width: 800px;
+            margin: auto;
+            display: flex;
+            /* border: 2px solid red; */
+        }
+
+        .cont > div{
+            background-color: teal;
+            height: 150px;
+            width: 150px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .cont > .large{
+            flex-grow: 1;
+        }
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(4,200px);
+            grid-template-rows: repeat(4,200px);
+            gap: 20px;
+        }
+        .grid > div{
+            background-color: teal;
+            font-size: 30px;
+            border-radius: 10px;
+        }
+        .grid > div:nth-child(8){
+            grid-row-start: 3;
+        }
+        .grid > div:nth-child(9){
+            grid-row-start: 3;
+            grid-column-start: 2;
+        }
+        .grid > div:nth-child(10){
+            grid-row-start: 4;
+            grid-column-start: 1;
+        }
+
+        .layout{
+            display: grid;
+            gap: 20px;
+        }
+        #top{
+            background-color: yellow;
+            grid-area: nav;
+            height: 80px;
+        }
+        #left{
+            background-color: green;
+            grid-area: left-b;
+            height: 400px;
+        }
+        #right{
+            background-color: blue;
+            grid-area: right-b;
+            height: 400px;
+        }
+        @media screen and (max-width:600px){
+            .layout{
+                grid-template-areas:    'nav'
+                                        'right-b'
+                                        'left-b';
+            }
+        }
+        @media screen and (min-width:600px) {
+            .layout{
+                grid-template-areas:    'nav nav'
+                                        'left-b right-b';
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="item"></div>
+        <div class="item large"></div>
+        <div class="item"></div>
+    </div>
+    <div class="cont">
+        <div class="item large"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    <div class="cont">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item large"></div>
+    </div>
+    <hr/>
+    <div class="grid">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <hr/>
+    <div class="layout">
+        <div id="top"></div>
+        <div id="left"></div>
+        <div id="right"></div>
+    </div>
+</body>
+</html>
