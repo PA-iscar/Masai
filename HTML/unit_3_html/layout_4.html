@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+    <style>
+        .cont{
+            width: 1200px;
+            height: 400px;
+            /* border: 2px solid red; */
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 2fr;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .nav{
+            /* border: 2px solid red; */
+            grid-column-start: 1;
+            grid-column-end: 5;
+            margin: 10px;
+            background-color: yellow;
+        }
+        .box{
+            margin: 10px;
+            /* border: 2px solid red; */
+            font-size: 30px;
+            padding: 25px;
+            color: rgb(65, 65, 65);
+        }
+        .heading{
+            padding: 25px;
+            font-size: 50px;
+        }
+
+        .box:nth-child(2){
+            background-color: red;
+        }
+        .box:nth-child(3){
+            background-color: lime;
+        }
+        .box:nth-child(4){
+            background-color: rgb(81, 81, 235);
+        }
+        .box:nth-child(5){
+            background-color: gray;
+        }
+
+        @media screen and (max-width: 900px) {
+            .cont{
+                width: 500px;
+                height: 600px;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 0fr 1fr 1fr;
+            }
+            .nav{
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+            .heading{
+                padding: 15px;
+            }
+            .box{
+                font-size: 28px;
+                padding: 15px;
+            }
+            .box:nth-child(3){
+                grid-row-start: 3;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .cont{
+                width: 300px;
+                grid-template-columns: 1fr;
+                grid-template-rows: 0fr repeat(4,1fr);
+            }
+            .nav{
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+            .heading{
+                padding: 15px;
+            }
+            .box{
+                font-size: 28px;
+                padding: 15px;
+            }
+            .heading{
+                padding: 10px;
+            }
+            .box:nth-child(3){
+                grid-row-start: 4;
+            }
+            .box:nth-child(5){
+                grid-row-start: 3;
+            }
+        }
+        
+    </style>
+</head>
+<body> 
+    <div class="cont">
+        <div class="nav heading">Navigation</div>
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+        <div class="box">Box 4</div>
+    </div>
+</body>
+</html>

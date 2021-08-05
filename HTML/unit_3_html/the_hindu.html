@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The hindu</title>
+    <style>
+        body{
+            background-color: rgb(255, 247, 240);
+        }
+        .cont{
+            padding: 1%;
+            margin: auto;
+            margin-top: 2%;
+            display: grid;
+            max-width: 1000px;
+            height: 600px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4,1fr);
+            /* border: 2px solid red; */
+            gap: 2%;
+        }
+        .box{
+            background-color: white;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: repeat(2,0fr);
+        }
+        .big{
+            background-color: navy;
+            color: white;
+            display: inline;
+        }
+        .box:first-child{
+            grid-row-start: 1;
+            grid-row-end: 4;
+        }
+        .box > img{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .big > img{
+            width: 100%;
+            height: 50%;
+        }
+        .heading{
+            font-size: 1.8rem;
+        }
+        p,.heading{
+            margin: 10px;
+        }
+        .box > .no + p{
+            margin-top: -50px;
+        }
+        .big > p{
+            color: rgb(166, 166, 212);
+        }
+        .title{
+            margin: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+        img + .title{
+            color: navy;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width:900px){
+            .cont{
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3,1fr);
+                max-width:500px;
+            }
+            .cont >:nth-child(5){
+                display: none;
+            }
+            .box:first-child{
+                grid-row-start: 1;
+                grid-row-end: 4;
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+            .box > .no + p{
+            margin-top: 0px;
+            }
+            img + .title{
+                font-size: 10px;
+            }
+            .box > .no + p{
+                margin-top: -15px;
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width:600px){
+            .cont{
+                grid-template-columns: 1fr;
+                grid-template-rows: 3fr repeat(5,1fr);
+                max-width:320px;
+                height: 750px;
+                gap: 10px;
+            }
+            .cont >:nth-child(5){
+                display: inherit;
+            }
+            .box:first-child{
+                grid-row-start: 1;
+                grid-row-end: 3;
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+            .heading{
+                font-size: 1.2rem;
+            }
+            .box > .no + p{
+            margin-top: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="big box">
+            <img src="https://source.unsplash.com/random" alt="">
+            <div class="heading">Ahmedabad joint rally with Trump will be historic, says Modi</div>
+            <div class="title">KALLOL BHATTACHERJEE</div>
+            <div class="title">SUHASINI HAIDAR</div>
+            <p>U.S. President to visit Sabarmati Ashram ahead of 'Namaste Trump' event</p>
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/something" alt="">
+            <div class="title">NATIONAL1</div>
+            <div class="no"></div>
+            <p>Ahmedabad glitters to welcome Donald Trump</p>
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/something" alt="">
+            <div class="title">NATIONAL2</div>
+            <div class="no"></div>
+            <p>Ahmedabad glitters to welcome Donald Trump</p>
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/something" alt="">
+            <div class="title">NATIONAL3</div>
+            <div class="no"></div>
+            <p>Ahmedabad glitters to welcome Donald Trump</p>
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/something" alt="">
+            <div class="title">NATIONAL4</div>
+            <div class="no"></div>
+            <p>Ahmedabad glitters to welcome Donald Trump</p>
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/something" alt="">
+            <div class="title">NATIONAL5</div>
+            <div class="no"></div>
+            <p>Ahmedabad glitters to welcome Donald Trump</p>
+        </div>
+    </div>
+</body>
+</html>
