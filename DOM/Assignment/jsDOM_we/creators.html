@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Practise Creators</title>
+    </head>
+    <body>
+        <div id="headings">
+        </div>
+        <div id="cont">
+        </div>
+        <ul id="vikings">
+            <li>Priyanshu</li>
+        </ul>
+        <button onclick="create_heading('1','h1','MASAI')">Create H1</button>
+        <button onclick="create_heading('2','h3','A Transformation in education! and Learn to earn, pay when you get.')">Create 2 H3</button>
+        <button onclick="create_divs()">Create DIVS</button>
+        <button onclick="create_li()">Add Students</button>
+        <button onclick="create_cp()">Add Copyright</button>
+        <script>
+            var students = ['Ajay','Akshay','Anusha','Chandrashekhara','Haren','Hasaan','Mahesh','Mousumi','Pavan','Rahul','Sumanta','Venkatesh','Vetrival','Vijayendra'];
+
+            function create_heading(n,hd,txt) {
+                let header = document.getElementById("headings");
+                for(var i=0;i<n;i++){
+                    var newH = document.createElement(hd)
+                    newH.textContent = txt;
+                    header.appendChild(newH);
+                }
+            }
+
+            function create_divs(){
+                let loc = document.getElementById("cont");
+                for(var i=1;i<=10;i++){
+                    var newDiv = document.createElement('div');
+                    newDiv.textContent = 'Content ' + i;
+                    loc.appendChild(newDiv);
+                }
+            }
+
+            function create_li(){
+                let loca = document.getElementById("vikings");
+                for(var i=0;i<students.length;i++){
+                    var newLi = document.createElement('li');
+                    newLi.textContent = students[i];
+                    loca.appendChild(newLi);
+                }
+            }
+
+            function create_cp(){
+                var parent = document.getElementsByTagName("button");
+                var par = document.body;
+                var child = document.createElement('p');
+                child.textContent = '@ masai 2019';
+                var vikings = document.getElementById("vikings");
+                par.insertBefore(child,parent[0])
+            }
+        </script>
+    </body>
+</html>
