@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO</title>
+    <style>
+        .low{
+            background-color: greenyellow;
+        }
+        .med{
+            background-color: yellow;
+        }
+        .high{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">Item</label>
+        <input type="text" id="item" />
+        <label for="">Priority</label>
+        <select name="" id="priority">
+            <option value="low">Low</option>
+            <option value="med">Med</option>
+            <option value="high">High</option>
+        </select>
+        <input type="submit" value="Submit" />
+    </form>
+    <hr/>
+    <table border="1">
+        <tr>
+            <td>Item</td>
+            <td>Priority</td>
+            <td>Mark</td>
+            <td>Action</td>
+        </tr>
+    </table>
+    <script>
+        var formEle = document.querySelector('form');
+
+        function addItem(e){
+            e.preventDefault();
+            console.log("Submitted");
+            var itm = document.getElementById('item').value;
+            var pri = document.getElementById('priority').value;
+            createItem(itm,pri);
+        }
+        
+        var count = 1;
+        function completeItem(e){
+            var parent = e.target.parentNode;
+            parent.style.background = "green";
+            parent.style.textDecorationLine = "line-through";
+        }
+        
+        function deleteItem(e){
+            var parent = e.target.parentNode;
+            parent.remove();
+        }
+
+        function createItem(itm, pri){
+            var tbl = document.querySelector('table');
+            var row = document.createElement('tr');
+            var cell1 = document.createElement('td');
+            cell1.textContent = itm;
+            var cell2 = document.createElement('td');
+            cell2.textContent = pri;
+            var cell3 = document.createElement('td');
+            cell3.textContent = 'Complete-'+count;
+            cell3.addEventListener('click', completeItem);
+            var cell4 = document.createElement('td');
+            cell4.textContent = 'Delete-'+count;
+            cell4.addEventListener('click', deleteItem);
+
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            row.appendChild(cell3);
+            row.appendChild(cell4);
+            row.setAttribute('class',pri);
+
+            
+
+            tbl.appendChild(row);
+
+            document.getElementById('item').value = "";
+            document.getElementById('priority').value = "low";
+
+            count++;
+        }
+        formEle.addEventListener('submit',addItem);
+    </script>
+</body>
+</html>
