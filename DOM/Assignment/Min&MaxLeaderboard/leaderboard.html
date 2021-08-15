@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+    <style>
+        body{
+            margin: 0%;
+            padding: 0%;
+            font-size: 35px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .cont{
+            margin: 1% auto;
+            width: 450px;
+            height: 800px;
+            /* border: 2px solid red; */
+        }
+
+        /* Conditions area */
+        #conditions{
+            /* border: 2px solid red; */
+            height: 150px;
+            display: grid;
+            grid-template-columns: 150px 150px;
+            grid-template-rows: 100px 100px;
+            justify-content: space-between;
+        }
+        #conditions .box{
+            height: 100px;
+            width: 150px;
+            padding-top: 18%;
+            border: 3px solid black;
+            box-sizing: border-box;
+        }
+        #conditions > #min{
+            background-color: red;
+        }
+        #conditions > #max{
+            background-color: limegreen;
+        }
+        #conditions > p{
+            margin: 5%;
+            text-align: center;
+        }
+        
+        /* Score area */
+        #score-cont{
+            /* border: 2px solid red; */
+            height: 190px;
+        }
+        #score-cont > p{
+            margin: 0%;
+            text-align: center;
+        }
+        #score-cont > .box{
+            font-size: 50px;
+            padding-top: 7%;
+            margin: auto;
+            height: 120px;
+            width: 270px;
+            background-color: rgba(128, 128, 128, 0.596);
+            box-sizing: border-box;
+        }
+
+        /* Keypad area */
+        .keypad{
+            /* border: 2px solid red; */
+
+            height: 310px;
+            display: grid;
+            grid-template-columns: repeat(3,80px);
+            grid-template-rows: repeat(4,80px);
+            justify-content: center;
+        }
+        .keypad > .box{
+            padding-top: 10%;
+            background-color: rgb(255, 123, 0);
+            box-sizing: border-box;
+            margin: 0% auto;
+        }
+        .keypad :nth-child(1),.keypad :nth-child(3),.keypad :nth-child(7),.keypad :nth-child(9){
+            background-color: rgb(100, 155, 56);
+        }
+        .keypad :nth-child(11){
+            background-color: blueviolet;
+        }
+
+        /* Button area */
+        .btn{
+            padding-top: 4%;
+            text-align: center;
+            margin: auto;
+            width: 270px;
+            height: 80px;
+            box-sizing: border-box;
+            background-color: black;
+            color: white;
+        }
+
+        .box{
+            text-align: center;
+            height: 60px;
+            width: 60px;
+            border: 2px solid black;
+        }
+        .hidden{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div id="conditions">
+            <div id="min">
+                <div class="box">43</div>
+            </div>
+            <div id="max">
+                <div class="box">2019</div>
+            </div>
+            <p>MIN</p>
+            <p>MAX</p>
+        </div>
+        
+        <div id="score-cont">
+            <p>SCORE</p>
+            <div class="box score">#</div>
+        </div>
+
+        <div class="keypad">
+            <div class="box" onclick="disp('1')">1</div>
+            <div class="box" onclick="disp('2')">2</div>
+            <div class="box" onclick="disp('3')">3</div>
+            <div class="box" onclick="disp('4')">4</div>
+            <div class="box" onclick="disp('5')">5</div>
+            <div class="box" onclick="disp('6')">6</div>
+            <div class="box" onclick="disp('7')">7</div>
+            <div class="box" onclick="disp('8')">8</div>
+            <div class="box" onclick="disp('9')">9</div>
+            <div class="box hidden"></div>
+            <div class="box" onclick="disp('0')">0</div>
+        </div>
+
+        <div class="btn" onclick="calc()">Enter</div>
+    </div>
+    
+    <script>
+        var min = 100000;
+        var max = -1;
+        
+        var cond1 = document.getElementById("min");
+        var val1 = cond1.getElementsByClassName("box");
+        val1[0].textContent = min;
+        
+        var cond2 = document.getElementById("max");
+        var val2 = cond2.getElementsByClassName("box");
+        val2[0].textContent = max;
+        
+        var parent = document.getElementById("score-cont");
+        var child = parent.getElementsByClassName("score");
+        var score = child[0].textContent;
+        
+        function disp(a){
+            if(score == '#'){
+                score = "";
+            }
+            score = score+a;
+            child[0].textContent = score;
+        }
+        // console.log(min,max,score);
+        
+        function calc(){
+            if(score == "#"){
+               return 0;
+            }
+            score = Number(score);
+            min = Number(min);
+            max = Number(max);
+            if(score<min){
+                min = score;
+                val1[0].textContent = min;
+            }
+            if(score>max){
+                max = score;
+                val2[0].textContent = max;
+            }
+
+            if(score == 0){
+                score = "#";
+                child[0].textContent = score;
+            }
+            else{
+                score = "";
+                child[0].textContent = score;
+            }
+        }
+        </script>
+</body>
+</html>
