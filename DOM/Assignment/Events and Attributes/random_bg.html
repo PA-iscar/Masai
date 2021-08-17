@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bg change</title>
+</head>
+<body>
+    <script>
+        function random(number) {
+            return Math.floor(Math.random() * number);
+        }
+        
+        function cng_bg(){
+            var randomColor = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            document.body.style.backgroundColor = randomColor;
+        }
+        window.addEventListener('resize', cng_bg);
+    </script>
+</body>
+</html>
