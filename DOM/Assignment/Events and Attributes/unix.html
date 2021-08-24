@@ -1,0 +1,184 @@
+<html>
+<head>
+    <title>Unix</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #layout{
+            height: 800px;
+            width: 1200px;
+            margin: auto;
+        }
+        .f-pic{
+            height: 290px;
+            width: 400px;
+            margin: auto;
+            background-color: rgba(236, 227, 223, 0.877);
+        }
+        .pic{
+            width: 100px;
+            margin-top: 20px;
+        }
+        .t-center{
+            text-align: center;
+        }
+        .h1{
+            font-size: 30px;
+            font-weight: bold;
+            margin: 20px;
+        }
+        .h2{
+            margin: 10px;
+            font-size: 25px;
+        }
+        .red-c{
+            color: red;
+        }
+        .blue-c{
+            color: blue;
+        }
+        .white-c{
+            color: white;
+        }
+        .float{
+            float: left;
+        }
+        #footer{
+            height: 110px;
+            width: 880px;
+            margin: auto;
+            margin-top: 60px;
+            padding: 10px;
+            background-color: rgb(221, 81, 0);
+        }
+        .t-left{
+            text-align: left;
+        }
+        .s-box{
+            height: 100px;
+            width: 250px;
+        }
+        .clear{
+            clear: both;
+        }
+        .float-r{
+            float: right;
+        }
+        .t-right{
+            text-align: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <button>Create Page</button>
+
+    <script>
+        document.body.querySelector("button").addEventListener("click", myFunc);
+        function myFunc(){
+            var div1 = document.createElement("div");
+            div1.setAttribute("id", "layout");
+            div1.setAttribute("class", "t-center");
+            
+            var div2 = document.createElement("div");
+            div2.setAttribute("class", "f-pic");
+
+            var img1 = document.createElement("img");
+            img1.setAttribute("class", "pic");
+            img1.setAttribute("src", "https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/linus.jpg");
+            
+            var div3 = document.createElement("div");
+            div3.setAttribute("class", "h1 blue-c");
+            div3.textContent = "Linus Torvalds";
+
+            var div4 = document.createElement("div");
+            div4.setAttribute("class", "h2");
+            div4.textContent = "The creator of Linux & Git";
+
+            var div5 = document.createElement("div");
+            div5.setAttribute("class", "t-center");
+            div5.style.marginTop = "30px";
+            div5.style.marginLeft = "300px";
+
+            var img2 = document.createElement("img");
+            img2.setAttribute("class", "pic float");
+            img2.setAttribute("src", "https://masai-course.s3.ap-south-1.amazonaws.com/resources/images/khan.jpg");
+
+            var div6 = document.createElement("div");
+            div6.setAttribute("class", "float");
+            div6.style.width = "530px";
+
+            var div7 = document.createElement("div");
+            div7.setAttribute("class", "h1 red-c float");
+            div7.textContent = "Sal Khan";
+
+            var div8 = document.createElement("div");
+            div8.setAttribute("class", "clear t-left");
+            div8.style.marginLeft = "15px";
+            div8.textContent = "Salman Khan is the founder of the Khan Academy which has a mission of providing a free world-class education for anyone, anywhere.";
+
+            var div9 = document.createElement("div");
+            div9.setAttribute("class", "clear");
+
+            var div10 = document.createElement("div");
+            div10.setAttribute("id", "footer");
+
+            var div11 = document.createElement("div");
+            div11.setAttribute("class", "s-box t-left float");
+            
+            var div12 = document.createElement("div");
+            div12.setAttribute("class", "white-c h2");
+            div12.textContent = "Ken Thompson";
+
+            var div13 = document.createElement("div");
+            div13.style.marginTop = "20px";
+            div13.style.margin = "10px";
+            div13.textContent = "Designed and Implemented the original Unix operating system";
+
+            var div14 = document.createElement("div");
+            div14.setAttribute("class", "float");
+            div14.style.backgroundColor = "black";
+            div14.style.height = "90px";
+            div14.style.marginTop = "10px";
+            div14.style.marginLeft = "200px";
+            div14.style.width = "5px";
+
+            var div15 = document.createElement("div");
+            div15.setAttribute("class", "t-right float-r");
+
+            var div16 = document.createElement("div");
+            div16.setAttribute("class", "white-c h2");
+            div16.style.marginBottom = "40px";
+            div16.textContent = "Dennis Ritchie";
+
+            var div17 = document.createElement("div");
+            div17.style.marginTop = "50px";
+            div17.style.margin = "10px";
+            div17.textContent = "The creator of C Programming Language";
+
+            document.body.appendChild(div1);
+            div1.appendChild(div2);
+            div2.appendChild(img1);
+            div2.appendChild(div3);
+            div2.appendChild(div4);
+            div1.appendChild(div5);
+            div5.appendChild(img2);
+            div5.appendChild(div6);
+            div6.appendChild(div7);
+            div6.appendChild(div8);
+            div1.appendChild(div9);
+            div1.appendChild(div10);
+            div10.appendChild(div11);
+            div11.appendChild(div12);
+            div11.appendChild(div13);
+            div10.appendChild(div14);
+            div10.appendChild(div15);
+            div15.appendChild(div16);
+            div15.appendChild(div17);
+
+        }
+    </script>
+</body>
+</html>
