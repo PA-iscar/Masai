@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Dom</title>
+</head>
+<body>
+    <script>
+        var form = document.createElement("form");
+        var stuName = document.createElement("input");
+        var age = document.createElement("input");
+        var science = document.createElement("input");
+        var english = document.createElement("input");
+        var maths = document.createElement("input");
+        var submit = document.createElement("button");
+        submit.type = "button";
+        submit.textContent = "submit";
+        stuName.type = "text";
+        age.type = "number";
+        science.type = "number";
+        english.type = "number";
+        maths.type = "number";
+
+        submit.addEventListener("click", show);
+
+        form.style.width = "100px";
+        form.style.height = "100px";
+        
+        
+        document.body.appendChild(form);
+        form.appendChild(stuName);
+        form.appendChild(age);
+        form.appendChild(science);
+        form.appendChild(english);
+        form.appendChild(maths);
+        form.appendChild(submit);
+        
+        
+        var table = document.createElement('table');
+        function show(){
+            var tr = document.createElement('tr');
+            var td1 = document.createElement('td');
+            var td2 = document.createElement('td');
+            var td3 = document.createElement('td');
+            var td4 = document.createElement('td');
+            var td5 = document.createElement('td');
+            var td6 = document.createElement('td');
+            var td7 = document.createElement('button');
+            td7.textContent = "Delete";
+            td7.addEventListener("click", rem);
+    
+            
+            table.style.marginTop = "50px";
+            document.body.appendChild(table);
+            table.appendChild(tr);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+            tr.appendChild(td6);
+            tr.appendChild(td7);
+
+            td1.textContent = stuName.value;
+            td2.textContent = age.value;
+            td3.textContent = science.value;
+            td4.textContent = english.value;
+            td5.textContent = maths.value;
+            var total = Number(science.value)+Number(english.value)+Number(maths.value);
+
+            td6.textContent = total;
+            
+            function rem(){
+                console.log();
+            }
+
+        }
+
+    </script>
+</body>
+</html>

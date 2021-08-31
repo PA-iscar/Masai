@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+</head>
+<body>
+    
+    <script>
+        var topEle = document.createElement('h1');
+        document.body.appendChild(topEle);
+        
+        var cont = document.createElement('button');
+        cont.textContent = "button";
+        cont.addEventListener("click", myFunc);
+        document.body.appendChild(cont);
+
+        var i = 1;
+        var j = 5;
+        
+        var contCont = document.createElement('div');
+        contCont.style.display = "grid";
+        document.body.appendChild(contCont);
+        
+        
+        var cardsCont = document.createElement("div");
+        function myFunc(){
+            
+            cardsCont.style.display = "flex";        
+            contCont.appendChild(cardsCont);
+            for(;i<=j;i++){
+                
+                var cards = document.createElement('button');
+                cards.textContent = i;
+                cards.addEventListener("click", function (event){  
+                    topEle.textContent = this.textContent;
+                    topEle.scrollTo(0,0);
+                });
+                cards.style.backgroundColor = "pink";
+                cards.style.width = "50px";
+                cards.style.height = "50px";
+                cards.style.margin = "10px";
+
+                cardsCont.appendChild(cards);
+            }
+            var br = document.createElement('br');
+            cardsCont.appendChild(br);
+            j+=5;
+
+            if (window.screen.width <= 700) {
+                cardsCont.style.flexDirection = "column";
+            }
+            if (window.screen.width >= 700) {
+                cardsCont.style.flexDirection = "row";
+            }
+            
+            function dispFunc(){
+            }
+        }
+        
+
+
+    </script>
+</body>
+</html>
