@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var doc = document.body;
+
+        var obj = document.createElement("button");         // 
+        var arr = document.createElement("button");         // 
+        var fun = document.createElement("button");         // 
+        var str = document.createElement("button");         //* Buttons are created dynamically
+        var num = document.createElement("button");         // 
+        var nll = document.createElement("button");         // 
+        var undef = document.createElement("button");       // 
+
+        obj.setAttribute('class', 'obj');                   //
+        arr.setAttribute('class', 'arr');                   //
+        fun.setAttribute('class', 'fun');                   //
+        str.setAttribute('class', 'str');                   //* Class names are given to the buttons
+        num.setAttribute('class', 'num');                   //
+        nll.setAttribute('class', 'nll');                   //
+        undef.setAttribute('class', 'undef');               //
+
+        obj.textContent = "Object";                         //
+        arr.textContent = "Array";                          //
+        fun.textContent = "Function";                       //
+        str.textContent = "String";                         //* Names of buttons are Povided
+        num.textContent = "Number";                         //
+        nll.textContent = "Null";                           //
+        undef.textContent = "Undefined";                    //
+        
+        doc.appendChild(obj);                               //
+        doc.appendChild(arr);                               //
+        doc.appendChild(fun);                               //
+        doc.appendChild(str);                               //* Buttons are appended to the document
+        doc.appendChild(num);                               //
+        doc.appendChild(nll);                               //
+        doc.appendChild(undef);                             //
+        
+        var list = document.createElement("div");           //
+        list.setAttribute('class', 'list');                 //* Creates a div, give it a class named list and append it to document
+        doc.appendChild(list);                              //
+
+        var lh = document.createElement("h2");              //* Creates and append a heading for the list
+        list.appendChild(lh);                               //
+
+        function disp(e){                                   //* Event listner passes an event that can be used to check what triggered the event
+            if(e.target.parentElement.querySelector('.list').getElementsByTagName("ul").length>0){                      //
+                // console.log(e.target.parentElement.querySelector('.list').getElementsByTagName("ul")[0]);            //* Checks if a list is already on screen if yes removes it
+                e.target.parentElement.querySelector('.list').getElementsByTagName("ul")[0].remove();                   //
+            }
+
+            lh.textContent = e.target.textContent;          //* Gives the heading of list according to the button pressed
+
+            var ul = document.createElement('ul');          //
+            var li1 = document.createElement('li');         //
+            var li2 = document.createElement('li');         //
+            var li3 = document.createElement('li');         //* Creates an Unordered list and 5 list items
+            var li4 = document.createElement('li');         //
+            var li5 = document.createElement('li');         //
+
+            list.appendChild(ul);                           //
+            ul.appendChild(li1);                            //
+            ul.appendChild(li2);                            //
+            ul.appendChild(li3);                            //* appends the unordered list
+            ul.appendChild(li4);                            //
+            ul.appendChild(li5);                            //
+
+            /* If else ladder to provide the values to the list items according to the events that is triggered*/
+
+            if(e.target.classList.contains('obj')){
+                li1.textContent = "Other than null, undefined, strings, numbers, boolean, and symbols, Everything in JavaScript is an Object.";
+                li2.textContent = "Object is a collection of Properties.";
+                li3.textContent = "Objects are mutable.";
+                li4.textContent = "Properties of an Object can be functions or other Objects as well.";
+                li5.textContent = "An object is an abstract data type with the addition of polymorphism and inheritance.";
+            }
+            else if(e.target.classList.contains('arr')){
+                li1.textContent = "Array is \"NOT\" a primitive Data type.";
+                li2.textContent = "Arrays in JavaScript can work both as a queue and as a stack.";
+                li3.textContent = "An array is a special type of object that can hold an ordered collection of elements.";
+                li4.textContent = "Arrays are a neat way to store continuous items in memory in a single variable.";
+                li5.textContent = "only the elements that actually contain data exist in the array.";
+            }
+            else if(e.target.classList.contains('fun')){
+                li1.textContent = "Functions are used to do almost Everything in JavaScript.";
+                li2.textContent = "Functions can execute itself by adding ( ) at the end.";
+                li3.textContent = "Functions allow you to store a piece of code that does a single task inside a defined block.";
+                li4.textContent = "Anonymous function — it has no name! It also won't do anything on its own. You generally use an anonymous function along with an event handler.";
+                li5.textContent = "Brackets in constuctor function are optional.";
+            }
+            else if(e.target.classList.contains('str')){
+                li1.textContent = "String can be iterated through as an Array.";
+                li2.textContent = "JavaScript strings are used for storing and manipulating text.";
+                li3.textContent = "Strings can be defined as \"Text 1\" , \'Text 2\' , \`Text 3\` .";
+                li4.textContent = "You can use the + operator to append multiple strings together.";
+                li5.textContent = "You can use the backslash character ( \\ ) at the end of each line to indicate that the string will continue on the next line.";
+            }
+            else if(e.target.classList.contains('num')){
+                li1.textContent = "18-45 is differnt from 018-045 Figure out how and why.";
+                li2.textContent = "0.1 + 0.2 is not equal to 0.3.";
+                li3.textContent = "The Number() function converts the object argument to a number that represents the object's value.";
+                li4.textContent = "If the parameter is a Date object, the Number() function returns the number of milliseconds since midnight January 1, 1970 UTC.";
+                li5.textContent = "NaN is the return value from operations which have an undefined numerical result.";
+            }
+            else if(e.target.classList.contains('nll')){
+                li1.textContent = "Null is not nothing.";
+                li2.textContent = "null is an object. Sound odd! Right? But this is fact.";
+                li3.textContent = "For situations when an object cannot be created, JavaScript provides a special value null — which indicates a missing object.";
+                li4.textContent = "Null is primitive value that represents the intentional absence of any object value.";
+                li5.textContent = "Null is a Falsy value.";
+            }
+            else if(e.target.classList.contains('undef')){
+                li1.textContent = "Undefined is still something.";
+                li2.textContent = "undefined is not a reserved keyword in JavaScript. You can assign value to it.";
+                li3.textContent = "Undefined is primitive value used when a variable has not been assigned a value.";
+                li4.textContent = "Undefined is a Falsy value.";
+                li5.textContent = "Until ES5 undefined was mutable.";
+            }
+            // console.log(e.target);
+        }
+
+        doc.addEventListener('click', disp); //* Event listner is added directly to the document in order to reduce redundancy 
+
+    </script>
+</body>
+</html>
