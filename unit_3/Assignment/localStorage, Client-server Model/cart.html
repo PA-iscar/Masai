@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        table{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+
+    </table>
+
+    <script>
+        var doc = document.body;
+        var tab = doc.querySelector("table");
+        var data = JSON.parse(localStorage.getItem('cart'));
+        if(data == null){
+            var empty = document.createElement("h1");
+            empty.style.textAlign = "center";
+            empty.textContent = "Your Cart is Empty";
+            doc.appendChild(empty);
+        }
+        for(var i=0;i<data.length;i+=4){
+            var row = document.createElement("tr");
+            for(var j=i;j<i+4 && j<data.length;j++){
+                var col = document.createElement("td");
+                // var cont = document.createElement("div");
+                var img = document.createElement("img");
+                var fname = document.createElement("h4");
+                var price = document.createElement("p");
+                // var btn = document.createElement("button");
+                // btn.setAttribute("class", "btn");
+
+                // col.textContent = data[j];
+                // console.log(data[j]);
+                img.style.width = '150px';
+                img.style.height = '150px';
+                fname.setAttribute("style", "text-align: center");
+                price.setAttribute("style", "text-align: center");
+                var val = [];
+                
+                for(var key in data[j]){
+                    val.push(key);
+                }
+                fname.textContent = data[j][val[0]];
+                price.textContent = data[j][val[1]];
+                img.setAttribute("src", data[j][val[2]])
+                // btn.textContent = "Add to cart";
+
+                col.appendChild(img);
+                col.appendChild(fname);
+                col.appendChild(price);
+                // col.appendChild(btn);
+
+                row.appendChild(col);
+            }
+            tab.appendChild(row);
+        }
+
+        var tItem = document.createElement("h2");
+        tItem.style.position = "absolute";
+        tItem.textContent = data.length;
+        tItem.style.top = '0px';
+        tItem.style.right = '50px';
+        doc.appendChild(tItem);
+        
+        var tprice = document.createElement("h2");
+        tprice.style.position = "absolute";
+        var sum = 0;
+        for(var i=0;i<data.length;i++){
+            // console.log(data[i]);
+            for(var key in data[i]){
+                if(key == 'price')
+                sum += Number(data[i][key]);
+            }
+        }
+        tprice.textContent = sum;
+        tprice.style.top = '50px';
+        tprice.style.right = '50px';
+        doc.appendChild(tprice);
+
+        var pbtn = document.createElement("button");
+        var input = document.createElement("input");
+
+        input.placeholder = "Apply Promo";
+        input.style.position = "absolute";
+        input.style.top = "100px";
+        input.style.right = "0px";
+        input.style.width = "100px";
+        doc.appendChild(input);
+        
+        pbtn.textContent = "Apply Promo";
+        pbtn.style.position = "absolute";
+        pbtn.style.top = "130px";
+        pbtn.style.right = "0px";
+        pbtn.style.width = "100px";
+        doc.appendChild(pbtn);
+
+        pbtn.addEventListener("click", function(){
+            if(input.value == "masai30"){
+                var tot = tprice.textContent;
+                tprice.textContent = ((tot*3)/10);
+            }
+        });
+
+        var cbtn = document.createElement("button");
+
+        cbtn.textContent = "Checkout";
+        cbtn.style.position = "absolute";
+        cbtn.style.top = "170px";
+        cbtn.style.right = "0px";
+        cbtn.style.width = "100px";
+        doc.appendChild(cbtn);
+        
+        cbtn.onclick = function () {
+            location.href = "success.html";
+        }
+
+    </script>
+</body>
+</html>

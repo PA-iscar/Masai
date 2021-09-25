@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+</head>
+<body>
+    <form>
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <label for="price">Price</label>
+        <input type="number" id="price">
+        <label for="image">Image URL</label>
+        <input type="url" id="image">
+        <button type="submit" class="add">Add</button>
+    </form>
+    <script>
+        var doc = document.body;
+        var form = doc.querySelector("form");
+        var arr = [];
+
+        function myFunc(e){
+            e.preventDefault();
+            if(e.target.classList.contains("add")){
+                var input = (form.getElementsByTagName("input"));
+                var obj = {
+                    name: input[0].value,
+                    price: input[1].value,
+                    image: input[2].value
+                }
+                arr.push(obj);
+                var jsonObj = JSON.stringify(arr);
+                localStorage.setItem('myArr',jsonObj);
+            }
+        }
+
+        form.addEventListener("click",myFunc);
+    </script>
+</body>
+</html>

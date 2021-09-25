@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        table{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+
+    </table>
+
+    <script>
+        var doc = document.body;
+        var tab = doc.querySelector("table");
+        var data = JSON.parse(localStorage.getItem('myArr'));
+        // console.log(data.length);
+        for(var i=0;i<data.length;i+=4){
+            var row = document.createElement("tr");
+            for(var j=i;j<i+4 && j<data.length;j++){
+                var col = document.createElement("td");
+                // var cont = document.createElement("div");
+                var img = document.createElement("img");
+                var fname = document.createElement("h4");
+                var price = document.createElement("p");
+                var btn = document.createElement("button");
+                btn.setAttribute("class", "btn");
+
+                // col.textContent = data[j];
+                // console.log(data[j]);
+                img.style.width = '150px';
+                img.style.height = '150px';
+                fname.setAttribute("style", "text-align: center");
+                price.setAttribute("style", "text-align: center");
+                var val = [];
+                
+                for(var key in data[j]){
+                    val.push(key);
+                }
+                fname.textContent = data[j][val[0]];
+                price.textContent = data[j][val[1]];
+                img.setAttribute("src", data[j][val[2]])
+                btn.textContent = "Add to cart";
+
+                col.appendChild(img);
+                col.appendChild(fname);
+                col.appendChild(price);
+                col.appendChild(btn);
+
+                row.appendChild(col);
+            }
+            tab.appendChild(row);
+
+        }
+
+        // var cart = [];
+
+        function myFunc(e){
+            if(e.target.classList.contains("btn")){
+                var val = e.target.parentNode;
+                var obj = {
+                    name: val.querySelector("h4").textContent,
+                    price: val.querySelector("p").textContent,
+                    image: val.querySelector("img").src
+                }
+
+                var cart = JSON.parse(localStorage.getItem('cart'));
+                if(cart == null){
+                    cart = [];
+                }
+                if(cart.length == 0){
+                    cart.push(obj);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+                else{
+                    var found = 0;
+                    for(var i=0;i<cart.length;i++){
+                        var keys = [];
+                        for(var key in cart[i]){
+                            keys.push(key);
+                        }
+                        if(obj.name == cart[i][keys[0]]){
+                            found = 0;
+                            window.alert("Item already in Cart");
+                            break;
+                        }
+                        else{
+                            found = 1;
+                        }
+                    }
+                    if(found){
+                        cart.push(obj);
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        found = 0;
+                    }
+                }
+            }
+            // console.log(cart);
+        }
+        // console.log(cart);
+
+
+        tab.addEventListener("click",myFunc);
+    </script>
+</body>
+</html>
