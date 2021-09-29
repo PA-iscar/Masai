@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="home.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+        <div id="login">
+            <form action="">
+                <input type="email" required placeholder="Email/Username">
+                <input type="password" required placeholder="Password">
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var doc = document.body;
+        var form = doc.querySelector("form");
+        var inputs = form.getElementsByTagName("input");
+        var myArr = [];
+
+        function handleForm(e) {
+            e.preventDefault();
+            myArr = JSON.parse(localStorage.getItem('dbs'));
+            if(myArr == null){
+                myArr = [];
+            }
+            var email = inputs[0].value;
+            var password = inputs[1].value;
+        
+            var found1 = 0;
+            var found2 = 0;
+
+            var inp = ["email","password"];
+            for(var i=0;i<myArr.length;i++){
+                if(email == myArr[i][inp[0]]){
+                    found1 = 1;
+                    if(password == myArr[i][inp[1]]){
+                        found2 = 1;
+                        break;
+                    }
+                    else{
+                        found2 = 0;
+                    }
+                }
+                else{
+                    found1 = 0;
+                }
+            }
+            if(found1){
+                if(found2){
+                    location.href = "home.html";
+                }
+                else{
+                    window.alert("Wrong Password");
+                }
+            }
+            else{
+                window.alert("Wrong Username/Email");
+            }
+        }
+
+        form.addEventListener('submit', handleForm);
+    </script>
+</body>
+</html>

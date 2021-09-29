@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="home.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+    </div>
+
+    <script>
+        var doc = document.body;
+        var cont = doc.querySelector(".container");
+        var navbar = doc.querySelector(".navbar")
+        var image = document.createElement("img");                   // Creating an Image on screen for carousel
+        image.style.width = "500px";
+        image.style.height = "300px";
+        // image.style.marginTop = "2%";
+        image.style.marginBottom = "2%";
+        
+        var images = [];
+        var time = 1000;
+
+        var movies = [
+            {
+                name: "Chal Mera Putt 2",
+                release_date: "13 March 2020",
+                poster: "https://i.ytimg.com/vi/N1l670JGSlo/hqdefault.jpg",
+                imdb: "9.2"
+            },
+            {
+                name: "Qismat 2",
+                release_date: "24 September 2021",
+                poster: "https://i.ytimg.com/vi/QpX6mHmSlGI/maxresdefault.jpg",
+                imdb: "8"
+            },
+            {
+                name: "Jungle Cruise",
+                release_date: "24 July 2021",
+                poster: "https://www.wfla.com/wp-content/uploads/sites/71/2021/05/jc.jpg",
+                imdb: "6.6"
+            },
+            {
+                name: "No Time To Die",
+                release_date: "30 September 2021",
+                poster: "https://boomersdaily.files.wordpress.com/2019/08/no-time-to-die-james-bond-007-movie-header.jpg?w=640",
+                imdb: "8.2"
+            },
+            {
+                name: "My Little Pony: A New Generation",
+                release_date: "22 September 2021",
+                poster: "https://i.ytimg.com/vi/ZM7Zbt_YjUA/maxresdefault.jpg",
+                imdb: "7.3"
+            },
+            {
+                name: "The Suicide Squad",
+                release_date: "5 August 2021",
+                poster: "https://therecenttimes.com/wp-content/uploads/2021/03/TheSuicideSquad-Regal-Reel-TitleImage.jpg",
+                imdb: "7.3"
+            },
+            {
+                name: "Kaadan",
+                release_date: "26 March 2021",
+                poster: "https://pbs.twimg.com/media/ExU3rfMW8AE6LaY.jpg",
+                imdb: "8.6"
+            },
+            {
+                name: "The Unholy",
+                release_date: "2 April 2021",
+                poster: "https://i.ytimg.com/vi/NmQiJPLYzPI/maxresdefault.jpg",
+                imdb: "5.1"
+            },
+            {
+                name: "Sweet Girl",
+                release_date: "20 August 2021",
+                poster: "https://gizmostory.com/wp-content/uploads/2021/08/Sweet-Girl-2-Poster.jpeg",
+                imdb: "5.5"
+            }
+        ];
+        
+        localStorage.setItem("moviedbs",JSON.stringify(movies));    // creating an array of some movie details and storing it locally
+    
+        movies = JSON.parse(localStorage.getItem("moviedbs"));
+
+        for(var i=0;i<movies.length;i++){                           // Using a loop to store posters of images in a seperate array for carousel        
+            images[i] = movies[i].poster;
+        }
+
+        var t = 0;
+        function carousel(){                                        // Function to Implement Carousel using Async
+            image.src = images[t];
+
+            if(t < images.length-1){
+                t++;
+            }
+            else{
+                t = 0;
+            }
+
+            setTimeout("carousel()", time);
+        }
+        
+        cont.appendChild(image);
+        
+        window.onload = carousel;
+        
+        function showGrid(){
+            if(cont.querySelector(".grid") != undefined){
+                cont.querySelector(".grid").remove();
+            }
+
+            var grid = document.createElement("table");
+            grid.setAttribute("class", "grid");
+            grid.setAttribute("style", "margin: auto");
+            
+            for(var i=0;i<movies.length;i+=3){
+                var row = document.createElement("tr");
+                for(var j=i;j<i+3 && j<movies.length; j++){
+                    var col = document.createElement("td");
+
+                    var img = document.createElement("img");
+                    img.style.width = "250px";
+                    img.style.height = "150px";
+
+                    img.setAttribute("src", movies[j].poster);
+                    col.appendChild(img);
+                    row.appendChild(col);
+                }
+                grid.appendChild(row);
+            }
+
+            cont.appendChild(grid);
+        }
+        
+        showGrid();
+
+        var b1 = document.createElement("button");
+        var b2 = document.createElement("button");
+        b1.style.margin = "1%";
+        b2.style.margin = "1%";
+        var br = document.createElement("br");
+
+        b1.textContent = "Sort by low rating to high"
+        b2.textContent = "Sort by high rating to low"
+
+        cont.insertBefore(b1, image)
+        cont.insertBefore(b2, image)
+        cont.insertBefore(br, image)
+
+        var n = movies.length;
+        function low(){
+            for(var i=0;i<n-1;i++){
+                for(var j=i+1;j<n;j++){
+                    if(Number(movies[j].imdb) < Number(movies[i].imdb)){
+                        var temp = movies[j];
+                        movies[j] = movies[i];
+                        movies[i] = temp;
+                    }
+                }
+            }
+            showGrid();
+        }
+        function high(){
+            low();
+            movies.reverse();
+            showGrid();
+        }
+
+        b1.addEventListener("click", low);
+        b2.addEventListener("click", high);
+
+    </script>
+</body>
+</html>
