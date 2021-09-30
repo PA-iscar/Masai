@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticketing System</title>
+</head>
+<body>
+    
+    <form action="">
+        <input type="radio" name="food" id="burger">
+        <label for="burger">Burger</label><br>
+        <input type="radio" name="food" id="sandwich">
+        <label for="sandwich">Sandwich</label><br>
+        <input type="radio" name="food" id="softdrink">
+        <label for="softdrink">Soft Drink</label><br>
+        <button type="submit">Order Food</button>
+    </form>
+    <script>
+        var doc = document.body;
+        doc.style.textAlign = "center";
+        var form = doc.querySelector("form");
+        var btn = form.querySelector("button");
+        var images = ["https://source.unsplash.com/random","https://source.unsplash.com/user/erondu","https://source.unsplash.com/daily"];
+        var oid = document.createElement("h2");
+        oid.style.position = "absolute";
+        oid.style.top = "20px";
+        oid.style.right = "20px";
+        oid.textContent = 0;
+        doc.appendChild(oid);
+        
+        let image = "";
+
+        btn.addEventListener("click",function(e){
+            e.preventDefault();
+            
+            
+            const checkbox = form.querySelector('input[name="food"]:checked');
+            
+            myPromise().then(function(){
+                if(checkbox){
+                    if(checkbox.id == "burger"){
+                        image = images[0];
+                    }
+                    else if(checkbox.id == "sandwich"){
+                        image = images[1];
+                    }
+                    else if(checkbox.id == "softdrink"){
+                        image = images[2];
+                    }
+                }
+                if(doc.querySelector(".img") != undefined)
+                            doc.querySelector(".img").remove();
+                        
+                        var img = document.createElement("img");
+                        img.setAttribute("class", "img");
+                        img.style.width = "300px";
+                        img.style.height = "300px";
+                        // console.log(image);
+                        img.src = image;
+                        doc.appendChild(img);
+                        oid.textContent++;
+                console.log("yes it is done");
+            }).catch(function(error){
+                console.log(error);
+            })
+
+            
+        });
+        
+        function myPromise(){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => 
+                {
+                    if(doc.querySelector(".img") != undefined || image){
+                        resolve();
+                    }
+                    else if(doc.querySelector(".img") == undefined){
+                        // console.log(image);
+                        reject("No option selected");
+                    }
+                }, 5000);
+            });
+        }
+            
+                
+    </script>
+</body>
+</html>
