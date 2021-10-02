@@ -24,7 +24,11 @@
                 doc.querySelector("img").remove();
                 doc.querySelector("table").remove();
             }
+            if(doc.querySelector("h2")){
+                doc.querySelector("h2").remove();
+            }
             var p = "Poster";
+            var imdb = "imdbRating";
             
             var img = document.createElement("img");
             img.style.width = "300px";
@@ -34,6 +38,11 @@
             else
                 img.src = data[p];
             doc.append(img);
+            if(data[imdb] > 8.5){
+                var rating = document.createElement("h2");
+                rating.innerHTML = "RECOMMENDED";
+                doc.appendChild(rating);
+            }
             var tab = document.createElement("table");
             var row = document.createElement("tr");
             for(var key in data){
