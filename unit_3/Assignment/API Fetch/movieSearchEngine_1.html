@@ -28,7 +28,11 @@
             
             var img = document.createElement("img");
             img.style.width = "300px";
-            img.src = data[p];
+            if(data[p] == undefined){
+                img.src = "https://c.tenor.com/unvXyxtdn3oAAAAC/no-result.gif";
+            }
+            else
+                img.src = data[p];
             doc.append(img);
             var tab = document.createElement("table");
             var row = document.createElement("tr");
@@ -58,11 +62,8 @@
                     let data = await res.json()
                     // console.log(data)
                     displayMovie(data)
-                } catch (err) {
-                    let main = document.getElementById("erro")
-                    let rex = document.createElement("p")
-                    rex.innerHTML = `<img src="https://c.tenor.com/unvXyxtdn3oAAAAC/no-result.gif"/>`
-                    main.append(rex)
+                } catch{
+                    
                 }
             }
             requestreceive()
