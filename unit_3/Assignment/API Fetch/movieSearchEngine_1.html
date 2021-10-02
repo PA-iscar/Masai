@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="movie">
+        <button type="submit">Search</button>
+    </form>
+    <script>
+        var doc = document.body;
+        var form = doc.querySelector("form");
+        var movie = form.querySelector("input");
+        var btn = form.querySelector("button");
+
+        function displayMovie(data){
+            if(doc.querySelector("img")){
+                doc.querySelector("img").remove();
+                doc.querySelector("table").remove();
+            }
+            var p = "Poster";
+            
+            var img = document.createElement("img");
+            img.style.width = "300px";
+            img.src = data[p];
+            doc.append(img);
+            var tab = document.createElement("table");
+            var row = document.createElement("tr");
+            for(var key in data){
+                var disp = document.createElement("tr");
+                // var cont = document.createElement("tr");
+                // var br = document.createElement("br");
+                disp.textContent = `${key} : ${data[key]}`;
+                // cont.textContent = ``;
+                row.appendChild(disp);
+                // row.appendChild(cont);
+                // row.appendChild(br);
+            }
+            tab.appendChild(row);
+            doc.appendChild(tab);
+        }
+
+
+        function myFunc(e) {
+            e.preventDefault();
+
+            async function requestreceive() {
+                try {
+                    let res = await fetch(
+                        `http://www.omdbapi.com/?apikey=d746f46d&t=${movie.value}`
+                    )
+                    let data = await res.json()
+                    // console.log(data)
+                    displayMovie(data)
+                } catch (err) {
+                    let main = document.getElementById("erro")
+                    let rex = document.createElement("p")
+                    rex.innerHTML = `<img src="https://c.tenor.com/unvXyxtdn3oAAAAC/no-result.gif"/>`
+                    main.append(rex)
+                }
+            }
+            requestreceive()
+        }
+
+        btn.addEventListener("click", myFunc);
+    </script>
+</body>
+
+</html>
