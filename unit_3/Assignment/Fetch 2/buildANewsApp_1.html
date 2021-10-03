@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News APP</title>
+</head>
+<body>
+    <script>
+        var doc = document.body;
+
+        function display(data){
+            var heading = document.createElement("h2");
+            var author = document.createElement("h4");
+            var content = document.createElement("p");
+            
+            author.style.color = "red";
+            content.style.color = "blue";
+
+            heading.textContent = data.title;
+            author.textContent = `Source: ${data.source.name}`;
+            content.textContent = data.content;
+
+            // console.log(data);
+            doc.append(heading);
+            doc.append(author);
+            doc.append(content);
+        }
+        async function request() {
+            try {
+                let res = await fetch(
+                    `https://newsapi.org/v2/everything?q=tesla&from=2021-09-02&sortBy=publishedAt&apiKey=f09330388d054ea8b405c7cb47a9516d`
+                )
+                let data = await res.json()
+                for(var i=0; i<10;i++){
+                    display(data.articles[i]);
+                }
+            }
+            catch (err){
+                console.log(err,"something went wrong");
+            }
+        }
+        request();
+    </script>
+</body>
+</html>
