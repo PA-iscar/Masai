@@ -92,7 +92,7 @@ async function request() {
     if(cList.contains("home") && srch.value){
         console.log(srch.value);
         var topic = srch.value;
-        url = `https://newsapi.org/v2/everything?q=${topic}&pageSize=5&page=${currentPage}&from=2021-09-04&sortBy=publishedAt&apiKey=f09330388d054ea8b405c7cb47a9516d`
+        url = `https://newsapi.org/v2/everything?q=${topic}&pageSize=5&page=${currentPage}&language=en&from=2021-09-04&sortBy=publishedAt&apiKey=f09330388d054ea8b405c7cb47a9516d`
     }
     
     try {
