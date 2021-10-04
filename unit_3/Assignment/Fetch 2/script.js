@@ -70,8 +70,9 @@ function display(data){
 }
 
 function handleChange(){
-    
-    console.log(event.target);
+    currentPage = Number(event.target.name);
+    console.log(event.target.name);
+    request();
 }
 
 async function request() {
@@ -85,13 +86,13 @@ async function request() {
         category = "&category=technology"
     }
     
-    // var url = `https://newsapi.org/v2/top-headlines?pageSize=5&page=${currentPage}${country}${category}${apiKey}`;
+    var url = `https://newsapi.org/v2/top-headlines?pageSize=5&page=${currentPage}${country}${category}${apiKey}`;
 
 
     if(cList.contains("home") && srch.value){
         console.log(srch.value);
         var topic = srch.value;
-        // url = `https://newsapi.org/v2/everything?q=${topic}&pageSize=5&page=${currentPage}&from=2021-09-04&sortBy=publishedAt&apiKey=f09330388d054ea8b405c7cb47a9516d`
+        url = `https://newsapi.org/v2/everything?q=${topic}&pageSize=5&page=${currentPage}&from=2021-09-04&sortBy=publishedAt&apiKey=f09330388d054ea8b405c7cb47a9516d`
     }
     
     try {
