@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie title with Throttle</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="search" name="movie" id="movie">
+    </form>
+
+    <script>
+        var apiKey = "";
+        window.onload = () => {
+            // console.log("YES");
+            var form = document.createElement("form");
+            var input = document.createElement("input");
+            var btn = document.createElement("button");
+            form.style.position = "Absolute"
+            form.style.top = "50%"
+            form.style.left = "50%"
+            input.placeholder = "Please enter Api key First";
+            btn.textContent = "Enter";
+            form.append(input);
+            form.append(btn);
+            document.body.append(form);
+
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                console.log(input.value);
+                apiKey = input.value;
+                console.log("Thank You");
+                setTimeout(() => {
+                    form.remove();
+                }, 1000);
+            })
+
+        };
+        
+        var doc = document.body;
+        var form = doc.querySelector("form")
+        var movie = form.querySelector("input");
+        const throttledCallBack = throttler(requestreceive, 1000);
+        var prev = '';
+        setInterval(() => {
+            if (prev != movie.value) {
+                prev = movie.value;
+                console.log(prev);
+                
+                throttledCallBack();
+            }
+        }, 3000);
+
+        function throttler(fn,delay){
+            let lastCall = Date.now();
+            return function(){
+                let now = Date.now();
+                if(now-lastCall > delay){
+                    lastCall = now;
+                    fn();
+                }
+            }
+        }
+
+        async function requestreceive() {
+            try {
+                let res = await fetch(
+                    `http://www.omdbapi.com/?apikey=${apiKey}&s=${movie.value}`
+                )
+                let data = await res.json()
+                // console.log(data.Search)
+                displayMovie(data.Search)
+            } catch (err) {
+                console.log(err + 'something is wrong');
+            }
+        }
+
+        function displayMovie(data){
+            if(doc.querySelector("ul")){
+                // console.log("Yes");
+                doc.querySelector("ul").remove();
+            }
+            var suggestions = document.createElement("ul");
+            // suggestions.style.backgroundColor = "grey";
+            suggestions.style.display = "inline-block";
+            if(data){
+                // console.log(data);
+                data.forEach(el => {
+                    // console.log(el);
+                    var li = document.createElement("li");
+                    li.style.color = "white";
+                    li.style.backgroundColor = "grey";
+                    li.style.listStyle = "none";
+                    li.textContent = el.Title;
+                    li.style.margin = "1%";
+                    li.style.border = "1px solid black"
+                    suggestions.append(li);
+                });
+            }
+            
+            doc.append(suggestions);
+        }
+    </script>
+</body>
+
+</html>
