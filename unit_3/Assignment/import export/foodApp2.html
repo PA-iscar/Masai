@@ -10,10 +10,12 @@
 <body>
     <script type="module">
 
-        import {navbar} from './components/components.js';
+        import { navbar, requestData } from './components/components.js';
         
         document.body.innerHTML = navbar();
         
+        let url = `https://www.themealdb.com/api/json/v1/1/random.php`;
+        requestData(url);
     </script>
 </body>
 </html>
