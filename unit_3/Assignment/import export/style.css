@@ -1,0 +1,29 @@
+body{
+    outline: 1px solid black;
+    padding: 1%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    min-height: 1000px;
+}
+
+#navbar{
+    outline: 1px solid blue;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#navbar > div > a{
+    text-decoration: none;
+    color: black;
+    outline: 1px solid lightblue;
+}
+
+#search{
+    margin: 1% 0%;
+}
+
+#search > #recipe {
+    width: 93%;
+}
+

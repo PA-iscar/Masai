@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script type="module">
+
+        import { navbar, search, displayData, requestData } from './components/components.js';
+
+        document.body.innerHTML += navbar();
+
+        document.body.innerHTML += search();
+
+        let recipe = "";
+        let btn = "";
+        let url = "";
+        window.onload = () => {
+            btn = document.body.querySelector("button");
+            btn.addEventListener("click", clicked)
+        }
+
+        const clicked = (e) => {
+            e.preventDefault();
+            recipe = document.body.querySelector("#recipe").value;
+            // console.log(recipe);
+            url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipe}`;
+            requestData(url);
+        }
+
+    </script>
+</body>
+
+</html>
