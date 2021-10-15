@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    
+    <style>
+        .container {
+            border: 1px solid black;
+            padding: 1%;
+            min-height: 500px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box {
+            width: 50%;
+            border: 1px solid blue;
+            margin: 1%;
+        }
+
+        .form * {
+            margin: 1%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="box output">
+
+        </div>
+        <div class="box form">
+            <form>
+                <input type="text" placeholder="Name"><br />
+                <input type="number" placeholder="Price"> <br />
+                <input type="text" placeholder="Currency"> <br />
+                <input type="number" placeholder="Quantity"> <br />
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let doc = document.body;
+        let output = doc.querySelector(".output");
+        let form = doc.querySelector(".form");
+        let page = 1;
+
+        async function requestData() {
+            try {
+                let res = await fetch(
+                    `http://localhost:3000/products?_page=${page}&_limit=5`
+                )
+                let data = await res.json();
+                display(data);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
+        window.onload = () => {
+            requestData();
+        }
+
+        let display = (data) => {
+            if (doc.querySelector(".container").querySelector(".form").querySelector(".pagination"))
+                doc.querySelector(".container").querySelector(".form").querySelector(".pagination").remove();
+            output.textContent = "";
+            for (var el in data) {
+                let info = data[el];
+
+                let card = document.createElement("div");
+                card.style.margin = "1%";
+                card.style.border = "1px solid red"
+                for (var key in info) {
+                    let item = document.createElement("div")
+                    item.style.margin = "1%";
+                    item.style.display = "inline";
+                    item.innerHTML = `${key}:${info[key]}<br/>`;
+                    card.append(item);
+                }
+                output.append(card)
+            }
+            createPagination();
+            doc.querySelector(".container").querySelector(".form").querySelector(".pagination").addEventListener("click", handleChange);
+
+            // console.log(data);
+        }
+
+        function addProduct(e) {
+
+            e.preventDefault();
+            if (e.target.classList.contains("btn")) {
+                let inputs = form.querySelector("form").getElementsByTagName("input");
+                const payload = {
+                    name: inputs[0].value,
+                    price: inputs[1].value,
+                    currency: inputs[2].value,
+                    available_qty: inputs[3].value
+                };
+                return fetch(`http://localhost:3000/products`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+            }
+        }
+
+        form.addEventListener("click", addProduct);
+
+        function createPagination() {
+            const pagination = document.createElement("div");
+            pagination.setAttribute("class", "pagination");
+            const prev = document.createElement("button");
+            const curr = document.createElement("button");
+            const next = document.createElement("button");
+
+            prev.textContent = "previous";
+            next.textContent = "next";
+            curr.textContent = page;
+
+            prev.name = page - 1;
+            curr.name = page;
+            next.name = page + 1;
+
+            if (page == 1) {
+                prev.disabled = true;
+            }
+
+            pagination.append(prev, curr, next);
+            doc.querySelector(".container").querySelector(".form").append(pagination);
+        }
+
+        function handleChange() {
+            page = Number(event.target.name);
+            console.log(event.target.name);
+            requestData();
+        }
+
+
+    </script>
+</body>
+
+</html>

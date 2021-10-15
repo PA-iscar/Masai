@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "name": "Lenovo",
+      "price": "40000",
+      "currency": "rupees",
+      "available_qty": 14,
+      "id": 1
+    },
+    {
+      "name": "Acer",
+      "price": "65000",
+      "currency": "rupees",
+      "available_qty": 11,
+      "id": 2
+    },
+    {
+      "name": "Dell",
+      "price": "20000",
+      "currency": "rupees",
+      "available_qty": 1,
+      "id": 3
+    },
+    {
+      "name": "Nokia",
+      "price": "5000",
+      "currency": "rupees",
+      "available_qty": 140,
+      "id": 4
+    },
+    {
+      "name": "Motorola",
+      "price": "1000",
+      "currency": "rupees",
+      "available_qty": 10,
+      "id": 5
+    },
+    {
+      "name": "MSI",
+      "price": "48000",
+      "currency": "rupees",
+      "available_qty": 19,
+      "id": 6
+    },
+    {
+      "name": "Nvidia",
+      "price": "90000",
+      "currency": "rupees",
+      "available_qty": 1,
+      "id": 7
+    },
+    {
+      "name": "LG",
+      "price": "10000",
+      "currency": "rupees",
+      "available_qty": 20,
+      "id": 8
+    },
+    {
+      "name": "Antec",
+      "price": "4000",
+      "currency": "rupees",
+      "available_qty": 130,
+      "id": 9
+    },
+    {
+      "name": "Logitech",
+      "price": "1000",
+      "currency": "rupees",
+      "available_qty": 300,
+      "id": 10
+    },
+    {
+      "name": "Boya",
+      "price": "999",
+      "currency": "rupees",
+      "available_qty": "25",
+      "id": 11
+    }
+  ]
+}
