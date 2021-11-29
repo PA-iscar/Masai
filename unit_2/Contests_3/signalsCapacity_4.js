@@ -1,3 +1,5 @@
+//* Solution
+
 class Stack{
     constructor() {
         this.items = [];
@@ -93,7 +95,7 @@ function runProgram(input){
                 }
             }
         }
-        console.log(result);
+        console.log(result.join(" "));
     }
 }
 
