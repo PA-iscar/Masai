@@ -28,5 +28,5 @@ function runProgram(input){
 }
 
 runProgram(`1
-1 2 7
-2 7 8`);
+1 1
+2 2`);
