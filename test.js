@@ -1,68 +1,39 @@
-const LinkedListNode = class {
-    constructor(nodeData) {
-        this.data = nodeData;
-        this.next = null;
-    }
-};
+function runProgram(input){
+    input = input.split("\n");
+    let t = Number(input[0]);
+    let index = 1;
+    while(t--){
+        let n = Number(input[index++]);
+        let arr = input[index++].split(" ").map(Number);
+        
+        let i=0;
+        let j=n-1;
 
-var addOneToLinkedList = function(head) {
-    let temp = head;
-    let arr = [];
-    while(temp){
-        arr.push(temp.data);
-        temp = temp.next;
-    }
-    arr = arr.reverse()
+        let c1 = 0;
+        let c2 = 0;
+        
+        let count1 = 0;
+        let count2 = 0;
 
-    let carry = 1;
-    
-    for(let i=0;i<arr.length;i++){
-        if(i==arr.length-1 && arr[i] == 9){
-            arr[i] = 0;
-            arr.push(1);
-            break;
+        while(i<=j){
+            if(c1>=arr[i]){
+                c1 = c1-arr[i];
+                count1++;
+                i++;
+            }
+
+            if(c2>=arr[j]){
+                c2 = c2-arr[j];
+                count2++;
+                j--;
+            }
+            c1+=2;
+            c2+=1;
         }
-        else if(arr[i] == 9){
-            arr[i] = 0;
-            carry = 1;
-        }
-        else{
-            arr[i]+= carry;
-            carry = 0;
-            break;
-        }
+        console.log(count1,count2);
     }
-    arr = arr.reverse();
-    
-    
-    temp = head;
-    
-
-    for(let i=0;i<arr.length;i++){
-        temp.data = arr[i];
-        if(temp.next == null && arr[i+1] != null){
-            temp.next = new LinkedListNode(arr[i+1])
-            break;
-        }
-        temp = temp.next;
-    }
-    // console.log(head)
-    
-    return head
-};
-
-function runProgram(){
-    
-    let head = new LinkedListNode(2);
-    let temp = head;
-    temp.next = new LinkedListNode(3);
-    temp = temp.next;
-    temp.next = new LinkedListNode(1);
-    temp = temp.next;
-    temp.next = new LinkedListNode(3);
-    addOneToLinkedList(head)
-    console.log(head)
-
 }
 
-runProgram();
+runProgram(`1
+5
+2 9 8 2 7`);
