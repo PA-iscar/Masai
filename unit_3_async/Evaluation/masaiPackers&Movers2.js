@@ -1,52 +1,51 @@
+var rrr = [];
 var count = 0;
-var pass = -1;
-var passArr = [];
-function now(arr,k){
-    pass++;
-    if(k<0){
-        return 0;
+
+function now(arr, n, k) {
+    if (k < 0) {
+        count--;
+        return 0
     }
-    if(k==0){
-        return 1;
+    if (k == 0) {
+        rrr.push(count);
+        count--;
+        return 1
     }
-    var sum = 0;
-    for(let i=0;i<arr.length;i++){
-        let val = now(arr,k-arr[i]);
-        if(val){
-            count = pass;
-            if(count)
-            passArr.push(count);
-        }
-        pass = 0;
-        sum += val;
+    var res = 0;
+    for (var i = 0; i < n; i++) {
+        count++;
+        let val = now(arr, n, k - arr[i]);
+        res = res + val;
     }
-    return sum
+    count--;
+    return res;
 }
 
-function runProgram(input){
+function runProgram(input) {
     input = input.split("\n");
-    let dim = input[0].split(" ").map(Number);
-    let arr = input[1].split(" ").map(Number);
-    let k = dim[0];
-    let n = dim[1];
+    var dim = input[0].split(" ").map(Number);
+    var k = dim[0];
+    var n = dim[1];
+    var arr = input[1].split(" ").map(Number);
+    // console.log(now(arr, n, k));
+    now(arr,n,k);
+    let min = rrr[0];
+    let max = rrr[0];
 
-    // console.log(now(arr,k));
-    if(now(arr,k) == 0){
-        console.log(-1);
-    }else{
-        var min = passArr[0];
-        var max = passArr[0];
-        for(let i=0;i<passArr.length;i++){
-            if(passArr[i]<min){
-                min = passArr[i];
-            }
-            if(passArr[i]>max){
-                max = passArr[i];
-            }
+    for(let i=0;i<rrr.length;i++){
+        if(rrr[i] < min){
+            min = rrr[i];
         }
-        console.log(min,max);
+        if(rrr[i] > max){
+            max = rrr[i];
+        }
     }
+    if(rrr.length == 0){
+        console.log(-1)
+    }
+    else
+        console.log(min,max)
 }
 
-runProgram(`3 3
-1 2 3`);
+runProgram(`39 3
+8 10 2`);
