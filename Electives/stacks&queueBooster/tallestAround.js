@@ -10,17 +10,21 @@ function runProgram(input){
         
         let res = [];
 
-        
-        for(let i=0;i+k<=n;i++){
-            
-            let max = Number.MIN_VALUE
-            for(let j=i;j<i+k;j++){
-                if(arr[j]>max){
+        for(let i=0;i<=n-k;i++){
+            let l = 0;
+            let j = i;
+            let max = Number.MIN_SAFE_INTEGER
+
+            while(l<k && j<n){
+                if(arr[j] > max){
                     max = arr[j];
                 }
+                j++;
+                l++;
             }
-            res.push(max)   
+            res.push(max)
         }
+        
         console.log(res.join(" "))
     }
 }
