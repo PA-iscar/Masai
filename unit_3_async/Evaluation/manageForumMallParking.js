@@ -1,32 +1,44 @@
-function runProgram(input){
+function runProgram(input) {
     input = input.split("\n");
     let k = Number(input[0]);
-    let arr1 = input[1].split(" ").map(Number);
-    let arr2 = input[2].split(" ").map(Number);
-    let tom = {};
-    for(let i=0;i<arr1.length;i++){
-        tom[arr2[i]] = arr1[i];
-    }
-    let arv = [];
-    let dep = [];
-    for(var key in tom){
-        dep.push(Number(key));
-        arv.push(tom[key]);
-    }
-    let count = 1;
-    for(let i=0;i<dep.length;i++){
-        if(arv[i+1]<=dep[i]){
-            count++;
+    let arr = input[1].split(" ");
+    let dep = input[2].split(" ");
+    let n = arr.length;
+    // for (let i = 0; i < n; i++) {
+    //     arr[i] = Number(arr[i].split(":").join(""));
+    //     dep[i] = Number(dep[i].split(":").join(""));
+    // }
+
+    arr.sort((a,b) => a - b);
+    dep.sort((a,b) => a - b);
+    // console.log(arr2,dep2);
+    let i=0;
+    let j=0;
+    let count = 0;
+    let ans = -1;
+    while(i<n && j<n){
+        if(arr[i] < dep[j]){
+            count++
+            i++;
+        }
+        if(dep[j] <= arr[i]){
+            if(count > ans){
+                ans = count;
+            }
+            count--;
+            j++;
         }
     }
-    if(count > k){
-        console.log("Not Possible");
+    if(count > ans){
+        ans = count;
     }
-    else{
-        console.log("Possible");
+    if(ans>k){
+        console.log("Not Possible")
+    }else{
+        console.log("Possible")
     }
 }
 
 runProgram(`1
-1 1
-2 2`);
+1 3 5
+2 6 8`);
