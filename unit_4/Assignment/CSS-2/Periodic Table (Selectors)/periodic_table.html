@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periodic Table</title>
+    <style>
+        body {
+            text-align: center;
+            display: grid;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        #heading {
+            text-align: center;
+            font-weight: lighter;
+            font-size: 35px;
+        }
+
+        .box {
+            height: 50px;
+            width: 50px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            padding: 25%;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .sm {
+            width: 45px;
+            height: 45px;
+            border: 1px solid black;
+            padding: 3% 1% 0% 0%;
+            box-sizing: border-box;
+        }
+
+        .br {
+            padding: 3% 0% 0% 1.5%;
+        }
+
+        .cr {
+            padding: 2% 0%;
+        }
+
+        .big {
+            height: 160px;
+            width: 160px;
+            position: absolute;
+            left: 200px;
+            top: 25px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            background: #89A02C;
+            text-align: left;
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 0px 15px;
+        }
+
+        .empty {
+            border: 0px;
+        }
+
+        .border {
+            border: 6px solid black;
+        }
+
+        .container {
+            position: relative;
+            /* border: 1px solid red; */
+            width: auto;
+            display: inline-flex;
+            /* margin: auto; */
+            margin-left: 370px;
+        }
+
+        .gap {
+            gap: 20px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 20px;
+        }
+
+        .footer {
+            /* border: 1px solid red; */
+            display: inline-flex;
+            flex-direction: column;
+            width: auto;
+            margin: 60px auto auto 290px;
+        }
+
+        .lime>.box:not(.red) {
+            background: #89A02C;
+        }
+
+        .red {
+            background: #AA0400;
+        }
+
+        .pink>.box {
+            background: #FF5555;
+        }
+
+        .cream>.box {
+            background: #FFE6D5;
+        }
+
+        .blue>.box {
+            background: #0A00FE;
+        }
+
+        .purple {
+            background: #AA0087;
+        }
+
+        .grey {
+            background: #6D535E;
+        }
+
+        .parrot {
+            background: #5AA02C;
+        }
+
+        .magenta>.box:not(.grey) {
+            background: #FF0166;
+        }
+
+        .yellow>.box:not(.grey) {
+            background: #FFCC00;
+        }
+
+        .orange>.box:not(.purple, .grey, .parrot) {
+            background: #FF6600;
+        }
+
+        .h {
+            font-size: 50px;
+        }
+
+        .p {
+            text-align: end;
+        }
+
+        .green>.box {
+            background: #47582E;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">THE PERIODIC TABLE OF ELEMENTS</h1>
+    <div class="container gap">
+        <div class="column lime">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box white red">H</div>
+        </div>
+        <div class="column pink">
+            <div class="box">88</div>
+            <div class="box">56</div>
+            <div class="box">38</div>
+            <div class="box">20</div>
+            <div class="box">12</div>
+            <div class="box">4</div>
+        </div>
+        <div class="column cream">
+            <div class="box border"></div>
+            <div class="box border"></div>
+        </div>
+        <div class="big">
+            <div>
+                <div class="h">Si</div>
+                <p>Silicon</p>
+            </div>
+            <div class="p">14</div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column blue">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column orange">
+            <div class="box grey"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box purple"></div>
+        </div>
+        <div class="column orange">
+            <div class="box grey"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box purple"></div>
+            <div class="box purple"></div>
+            <div class="box parrot"></div>
+        </div>
+        <div class="column orange">
+            <div class="box grey"></div>
+            <div class="box"></div>
+            <div class="box purple"></div>
+            <div class="box purple"></div>
+            <div class="box parrot"></div>
+            <div class="box parrot"></div>
+        </div>
+        <div class="column">
+            <div class="box grey"></div>
+            <div class="box purple"></div>
+            <div class="box purple"></div>
+            <div class="box parrot"></div>
+            <div class="box parrot"></div>
+            <div class="box parrot"></div>
+        </div>
+        <div class="column magenta">
+            <div class="box grey"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="column yellow">
+            <div class="box grey"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container green">
+            <div class="box sm white">La</div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+        </div>
+        <div class="container lime">
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm cr">Am</div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm"></div>
+            <div class="box sm br">No</div>
+        </div>
+    </div>
+</body>
+
+</html>
