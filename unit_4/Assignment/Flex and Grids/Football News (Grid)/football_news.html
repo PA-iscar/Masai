@@ -9,8 +9,11 @@
         .container {
             font-family: Arial, Helvetica, sans-serif;
             width: 940px;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            /* display: flex;
+            justify-content: space-between; */
             margin: auto;
             /* border: 1px solid red; */
         }
@@ -20,9 +23,11 @@
             height: 300px;
             background-image: url("https://via.placeholder.com/450x300");
             color: white;
-            display: flex;
+            /* display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-between; */
+            display: grid;
+            gap: 143px;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -30,6 +35,7 @@
             padding: 5px 8px;
             font-size: 14px;
             width: fit-content;
+            height: fit-content;
             position: relative;
             top: -10px;
             left: -10px;
@@ -41,16 +47,22 @@
             background-color: #E0DE02;
         }
         .details {
-            display: flex;
+            /* display: flex;
             flex-direction: column;
+            justify-content: space-between; */
+            display: grid;
+            gap: 19px;
             height: 90px;
             width: 400px;
-            justify-content: space-between;
         }
         .info {
-            display: flex;
+            /* display: flex;
             justify-content: space-between;
-            width: 250px;
+            width: 250px; */
+            display: grid;
+            grid-template-columns: 1.25fr 0.2fr 1.2fr;
+            text-align: center;
+            width: 260px;
         }
         .card .info {
             color: #bdbdbd;
@@ -67,14 +79,18 @@
         .card {
             /* border: 1px solid red; */
             margin: 40px 0px;
-            display: flex;
             width: 440px;
-            justify-content: space-between;
             gap: 30px;
+            /* display: flex;
+            justify-content: space-between; */
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
         }
         .card>.details {
             /* border: 1px solid red; */
-            margin: 10px 0px;
+            width: auto;
+            margin: auto 0px;
+            /* margin: 10px 0px; */
         }
     </style>
 </head>
