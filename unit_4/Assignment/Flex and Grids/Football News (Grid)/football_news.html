@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football news</title>
+    <style>
+        .container {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 940px;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            /* border: 1px solid red; */
+        }
+        .b-card {
+            /* border: 1px solid black; */
+            width: 450px;
+            height: 300px;
+            background-image: url("https://via.placeholder.com/450x300");
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .overlay {
+            padding: 5px 8px;
+            font-size: 14px;
+            width: fit-content;
+            position: relative;
+            top: -10px;
+            left: -10px;
+        }
+        .blue {
+            background-color: #1334A8;
+        }
+        .yellow {
+            background-color: #E0DE02;
+        }
+        .details {
+            display: flex;
+            flex-direction: column;
+            height: 90px;
+            width: 400px;
+            justify-content: space-between;
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            width: 250px;
+        }
+        .card .info {
+            color: #bdbdbd;
+        }
+        .heading {
+            font-size: 22px;
+        }
+        .card .heading {
+            font-size: 20px;
+        }
+        .icon {
+            width: 15px;
+        }
+        .card {
+            /* border: 1px solid red; */
+            margin: 40px 0px;
+            display: flex;
+            width: 440px;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .card>.details {
+            /* border: 1px solid red; */
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <div class="b-card">
+                <div class="overlay blue">TENIS</div>
+                <div class="details">
+                    <div class="heading">England reach World Cup last 16 with hard-fought win over Argentina</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/120" alt="" class="img">
+                <div class="details">
+                    <div class="heading">There's a great history of the winner Sandia</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/120" alt="" class="img">
+                <div class="details">
+                    <div class="heading">It'll be a tough game and a physical game</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/120" alt="" class="img">
+                <div class="details">
+                    <div class="heading">If we don't score we can't get frustrated</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="b-card">
+                <div class="overlay yellow">FOOTBALL</div>
+                <div class="details">
+                    <div class="heading">We are playing history and Argentina at the World Cup, says Phil Neville</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/120" alt="" class="img">
+                <div class="details">
+                    <div class="heading">Le Havre does have a growing fan club</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/120" alt="" class="img">
+                <div class="details">
+                    <div class="heading">It will be hard to break them down</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/120" alt="" class="img">
+                <div class="details">
+                    <div class="heading">We've never seen them as organised</div>
+                    <div class="info">
+                        <div class="date"><img src="https://cdn-icons-png.flaticon.com/512/860/860794.png" alt="" class="icon"> May 19, 2019</div>
+                        <div class="divider">|</div>
+                        <div class="comment"><img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="" class="icon"> 3 Comment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
