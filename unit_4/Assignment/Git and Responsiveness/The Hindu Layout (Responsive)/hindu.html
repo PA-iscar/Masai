@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The hindu</title>
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .container {
+            padding: 1%;
+            margin: auto;
+            margin-top: 2%;
+            display: grid;
+            max-width: 1000px;
+            /* height: 600px; */
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .box {
+            height: 140px;
+            background-color: white;
+            display: flex;
+        }
+
+        .big {
+            height: 460px;
+            background-color: #08345B;
+            color: white;
+            display: inline;
+        }
+
+        .box:first-child {
+            grid-row-start: 1;
+            grid-row-end: 4;
+        }
+
+        .big>img {
+            width: 100%;
+            height: 50%;
+        }
+
+        p,
+        .heading {
+            margin: 10px;
+            font-size: 1.05em;
+        }
+
+        .heading {
+            font-size: 1.8rem;
+        }
+
+        .big>p {
+            color: rgb(166, 166, 212);
+        }
+
+        .title {
+            margin: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+        }
+
+        .img {
+            width: 140px;
+            background-image: url("https://source.unsplash.com/random/140x140");
+        }
+
+        .cont {
+            width: 69.5%;
+            position: relative;
+        }
+
+        .cont>.title {
+            color: navy;
+            font-weight: bold;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 5px;
+            margin: 0px 10px;
+            color: rgba(128, 128, 128, 0.521);
+            font-size: 0.8em;
+            letter-spacing: 1px;
+        }
+
+        @media screen and (max-width:1100px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                max-width: 534px;
+            }
+
+            .container>:nth-child(5) {
+                display: none;
+            }
+
+            .box:not(.box:first-child) {
+                height: 70px;
+            }
+
+            .img {
+                width: 70px;
+                height: 70px;
+                /* outline: 1px solid red; */
+            }
+
+            .big {
+                width: 500px;
+            }
+
+            .box:first-child {
+                grid-row-start: 1;
+                grid-row-end: 4;
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+
+            .cont>.title {
+                font-size: 0.5em;
+                margin: 5px;
+            }
+
+            .cont>p {
+                /* margin-top: -15px; */
+                font-size: 0.55em;
+                margin: 5px;
+            }
+
+            .footer {
+                font-size: 0.4em;
+                margin: 0px 5px;
+            }
+
+            .one {
+                order: 1;
+            }
+
+            .two {
+                order: 3;
+            }
+
+            .three {
+                order: 2;
+            }
+
+            .five {
+                order: 4;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 3fr repeat(5, 1fr);
+                width: 350px;
+                height: 750px;
+                gap: 15px;
+            }
+
+            .big>div {
+                margin: 5px 10px;
+            }
+
+            .container>:nth-child(5) {
+                display: flex;
+            }
+
+            .box:first-child {
+                grid-row-start: 1;
+                grid-row-end: 3;
+                grid-column-start: 1;
+                grid-column-end: 2;
+                width: 350px;
+                height: 320px;
+            }
+
+            .heading {
+                font-size: 1.25em;
+            }
+
+            .box:first-child>.title {
+                font-size: .55em;
+            }
+
+            .box:first-child>p {
+                font-size: .75em;
+            }
+
+            .cont>.title {
+                font-size: .7em;
+            }
+            .cont>p {
+                font-size: .795em;
+                width: 100%;
+            }
+            .box:not(.box:first-child) {
+                height: 90px;
+            }
+            .img {
+                height: 90px;
+                width: 90px;
+            }
+            .footer {
+                font-size: .6em;
+            }
+
+            .two {
+                order: 2;
+            }
+
+            .three {
+                order: 3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="big box">
+            <img src="https://source.unsplash.com/random" alt="">
+            <div class="heading">Ahmedabad joint rally with Trump will be historic, says Modi</div>
+            <div class="title">KALLOL BHATTACHERJEE</div>
+            <div class="title">SUHASINI HAIDAR</div>
+            <p>U.S. President to visit Sabarmati Ashram ahead of 'Namaste Trump' event</p>
+        </div>
+        <div class="box one">
+            <div class="img"></div>
+            <div class="cont">
+                <div class="title">THE HUDDLE</div>
+                <p>The Huddle 2020 | Regional integration pegged to SAARC revival, says Ranil Wickremesinghe</p>
+            </div>
+        </div>
+        <div class="box two">
+            <div class="img"></div>
+            <div class="cont">
+                <div class="title">NATIONAL</div>
+                <p>Over 10 lakh Kashmir students to don school uniforms after seven months</p>
+            </div>
+        </div>
+        <div class="box three">
+            <div class="img"></div>
+            <div class="cont">
+                <div class="title">NATIONAL</div>
+                <p>Some restrictions imposed on export of medical equipment to China, says MEA</p>
+                <div class="footer">6hrs</div>
+            </div>
+        </div>
+        <div class="box four">
+            <div class="img"></div>
+            <div class="cont">
+                <div class="title">NATIONAL</div>
+                <p>Ahmedabad glitters to welcome Donald Trump</p>
+            </div>
+        </div>
+        <div class="box five">
+            <div class="img"></div>
+            <div class="cont">
+                <div class="title">THE HUDDLE</div>
+                <p>Only a "a micorscopic minority" protesting against CAA: Tejaswi Surya</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
