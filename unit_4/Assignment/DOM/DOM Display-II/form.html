@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <style>
+        #output {
+            width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Name</label>
+                </td>
+                <td>
+                    <input type="text" name="nam" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="department">Department</label>
+                </td>
+                <td>
+                    <input type="radio" name="department" id="sales" value="Sales">
+                    <label for="sales">Sales</label>
+                    <input type="radio" name="department" id="market" value="Marketing">
+                    <label for="market">Marketing</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="year1">Sales Year 1</label>
+                </td>
+                <td>
+                    <input type="number" name="Sales" id="year1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="year2">Sales Year 2</label>
+                </td>
+                <td>
+                    <input type="number" name="Sales" id="year2">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <table border="2" id="output">
+            <button id="asc" onclick="filter(this)">ascending</button>
+            <button id="dsc" onclick="filter(this)">descending</button>
+        <thead>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Year 1 Sales</th>
+            <th>Year 2 Sales</th>
+            <th>Average Sales</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let doc = document.body;
+        let form = doc.querySelector("form");
+        let submit = form.querySelector("#submit")
+        let output = doc.querySelector("#output").querySelector("tbody");
+        submit.addEventListener("click", addCont);
+        function addCont(e) {
+            e.preventDefault();
+            let name = form.querySelector("#name").value;
+            let department = form.querySelector('input[name="department"]:checked').value;
+            let sales1 = Number(form.querySelector("#year1").value);
+            let sales2 = Number(form.querySelector("#year2").value);
+            let avgSales = ((sales1+sales2)/2).toFixed(2);
+            
+            let arr = [name,department,sales1,sales2,avgSales];
+                        
+            let row = document.createElement("tr");
+            let col;
+            for(let i=0;i<5;i++){
+                col = document.createElement("td");
+                col.textContent = arr[i];
+                row.append(col);
+            }
+            col.classList.add("avg");
+            output.append(row);
+        };
+        
+        function filter(e) {
+            let table = output
+            let rows;
+            let switching = true;
+            let shouldSwitch;
+            let i;
+            let x;
+            let y;
+
+            while(switching) {
+                switching = false;
+                rows = table.rows;
+                for(i=0;i<rows.length-1;i++){
+                    shouldSwitch = false;
+                    x = Number(rows[i].querySelector(".avg").textContent);
+                    y = Number(rows[i+1].querySelector(".avg").textContent);
+
+                    let cond = (e.id == "asc") ? (x>y) : (x<y) ;
+                    if(cond){
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if(shouldSwitch) {
+                    rows
+                    rows[i].parentNode.insertBefore(rows[i+1],rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
