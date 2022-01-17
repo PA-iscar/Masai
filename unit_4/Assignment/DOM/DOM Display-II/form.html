@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORM</title>
     <style>
+        div {
+            width: 800px;
+            margin: auto;
+        }
         #output {
             width: 800px;
         }
@@ -59,18 +63,21 @@
         </table>
     </form>
     <br>
-    <table border="2" id="output">
+    <div>
+        <table border="2" id="output">
             <button id="asc" onclick="filter(this)">ascending</button>
             <button id="dsc" onclick="filter(this)">descending</button>
-        <thead>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Year 1 Sales</th>
-            <th>Year 2 Sales</th>
-            <th>Average Sales</th>
-        </thead>
-        <tbody></tbody>
-    </table>
+            <thead>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Year 1 Sales</th>
+                <th>Year 2 Sales</th>
+                <th>Average Sales</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
 
     <script>
         let doc = document.body;
@@ -84,13 +91,13 @@
             let department = form.querySelector('input[name="department"]:checked').value;
             let sales1 = Number(form.querySelector("#year1").value);
             let sales2 = Number(form.querySelector("#year2").value);
-            let avgSales = ((sales1+sales2)/2).toFixed(2);
-            
-            let arr = [name,department,sales1,sales2,avgSales];
-                        
+            let avgSales = ((sales1 + sales2) / 2).toFixed(2);
+
+            let arr = [name, department, sales1, sales2, avgSales];
+
             let row = document.createElement("tr");
             let col;
-            for(let i=0;i<5;i++){
+            for (let i = 0; i < 5; i++) {
                 col = document.createElement("td");
                 col.textContent = arr[i];
                 row.append(col);
@@ -98,7 +105,7 @@
             col.classList.add("avg");
             output.append(row);
         };
-        
+
         function filter(e) {
             let table = output
             let rows;
@@ -108,23 +115,23 @@
             let x;
             let y;
 
-            while(switching) {
+            while (switching) {
                 switching = false;
                 rows = table.rows;
-                for(i=0;i<rows.length-1;i++){
+                for (i = 0; i < rows.length - 1; i++) {
                     shouldSwitch = false;
                     x = Number(rows[i].querySelector(".avg").textContent);
-                    y = Number(rows[i+1].querySelector(".avg").textContent);
+                    y = Number(rows[i + 1].querySelector(".avg").textContent);
 
-                    let cond = (e.id == "asc") ? (x>y) : (x<y) ;
-                    if(cond){
+                    let cond = (e.id == "asc") ? (x > y) : (x < y);
+                    if (cond) {
                         shouldSwitch = true;
                         break;
                     }
                 }
-                if(shouldSwitch) {
+                if (shouldSwitch) {
                     rows
-                    rows[i].parentNode.insertBefore(rows[i+1],rows[i]);
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                     switching = true;
                 }
             }
