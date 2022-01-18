@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        .stopwatch {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .stopwatch>div:not(.buttons) {
+            outline: 1px solid black;
+        }
+
+        .watch {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* gap: 20px; */
+            font-size: 28px;
+        }
+        .watch>div {
+            width: 70px;
+            /* outline: 1px solid black; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stopwatch">
+        <div>STOPWATCH</div>
+        <div class="watch">
+            <div class="hours"></div>
+            <div class="minutes"></div>
+            <div class="seconds"></div>
+            <div class="milliseconds"></div>
+        </div>
+        <div class="buttons">
+            <button class="start">START</button>
+            <button class="pause">PAUSE</button>
+            <button class="reset">RESET</button>
+        </div>
+    </div>
+
+    <script>
+        let hours = document.body.querySelector(".hours");
+        let minutes = document.body.querySelector(".minutes");
+        let seconds = document.body.querySelector(".seconds");
+        let milliseconds = document.body.querySelector(".milliseconds");
+
+        let hrs = 0;
+        let min = 0;
+        let sec = 0;
+        let ms = 0;
+        let speed = 10;
+
+        let start = document.querySelector(".start");
+        let pause = document.querySelector(".pause");
+        let reset = document.querySelector(".reset");
+
+        let running = false;
+        let myWatch;
+
+        let update = () => {
+            if(ms>=100){
+                ms = 0;
+                sec++;
+            }
+            if(sec>=60){
+                sec = 0;
+                min++;
+            }
+            if(min>=60){
+                min = 0;
+                hrs++;
+            }
+            hours.textContent = (hrs == 0) ? "" : `${hrs} h`
+            minutes.textContent = ((min == 0) && (hrs == 0)) ? "" : `${min} m`
+            seconds.textContent = sec + ' s';
+            milliseconds.textContent = ms;
+        }
+
+        start.addEventListener("click", () => {
+            if(!running){
+                myWatch = setInterval(() => {
+                    ms++;
+                    console.log("Start")
+                    running = true;
+                    update();
+                }, speed);
+            }
+        });
+
+        pause.addEventListener("click", () => {
+            clearInterval(myWatch)
+            console.log("Pause")
+            running = false;
+        });
+
+        reset.addEventListener("click", () => {
+            clearInterval(myWatch)
+            console.log("Reset")
+            hrs = 0;
+            min = 0;
+            sec = 0;
+            ms = 0;
+            running = false;
+            update();
+        });
+
+        update();
+    </script>
+</body>
+
+</html>
