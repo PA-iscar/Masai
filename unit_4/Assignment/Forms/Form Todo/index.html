@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Todo</title>
+    <style>
+        div {
+            margin: 20px 0px;
+        }
+        .done {
+            color: green;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="title">Title</label>
+        <input type="text">
+    </form>
+</body>
+
+<script>
+    let doc = document.body
+    let form = doc.querySelector("form")
+
+    let todos = new Array();
+    let initialId = 101;
+    form.addEventListener("submit", e => {
+        e.preventDefault()
+
+        let id = initialId++;
+        let status = false;
+        let title = e.target.querySelector("input").value
+        e.target.querySelector("input").value = "";
+
+        todos.push({ id, status, title })
+        // console.log(todos)
+        addList(todos)
+    })
+
+
+
+    let list = document.createElement("div")
+    let item = document.createElement("div")
+    list.append(item)
+    doc.append(list)
+
+    let addList = arr => {
+        let items = list.querySelectorAll("div")
+        for(let i=0;i<items.length;i++){
+            items[i].remove();
+        }
+        for(let i=0;i<arr.length;i++){
+
+            let item = document.createElement("div")
+            let name = document.createElement("span")
+            let check = document.createElement("input")
+            // console.log(arr[i])
+            check.type = "checkbox";
+            name.textContent = (arr[i].title)?arr[i].title:"New Task";
+            check.checked = arr[i].status;
+            
+            item.append(name,check)
+            list.append(item)
+        }
+    }
+
+    doc.addEventListener("click", e => {
+        if(e.target.type == "checkbox"){
+            e.target.parentNode.querySelector("span").classList.toggle("done")
+        }
+    })
+
+
+</script>
+
+</html>
