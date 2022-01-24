@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="home.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+        <div id="login">
+            <form action="">
+                <input type="email" required placeholder="Email">
+                <input type="password" required placeholder="Password">
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let doc = document.body
+        let form = doc.querySelector("form")
+        let inputs = form.querySelectorAll("input")
+        let arr = []
+
+        let handle = e => {
+            e.preventDefault()
+            let data = JSON.parse(localStorage.getItem('database'))
+            
+            arr = (data)?data:[]
+
+            let email = inputs[0].value
+            let pass = inputs[1].value
+            let found = 0;
+            
+            for(let i=0; i<arr.length; i++){
+                if((email == arr[i]["email"]) && (pass == arr[i]["password"])){
+                    found = 1;
+                    break;
+                }
+            }
+
+            if(found){
+                location.href = "Home.html"
+            }
+            else {
+                window.alert("invalid Credentials")
+            }
+        }
+
+        form.addEventListener("submit", handle)
+    </script>
+</body>
+</html>

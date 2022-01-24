@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="home.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+        <div id="signup">
+            <form action="">
+                <input type="text" placeholder="Name" required>
+                <input type="tel" placeholder="Number" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let doc = document.body
+        let form = doc.querySelector("form")
+        let inputs = form.querySelectorAll("input")
+        let submit = form.querySelector(".submit")
+        let arr = new Array();
+
+        let handle = e => {
+            e.preventDefault()
+            let data = JSON.parse(localStorage.getItem('database'))
+            arr = (data)?data:[];
+            
+            let name = inputs[0].value
+            let contact = inputs[1].value
+            let email = inputs[2].value
+            let password = inputs[3].value
+            
+            let obj = {name,contact,email,password}
+            arr.push(obj)
+            localStorage.setItem('database', JSON.stringify(arr));
+            inputs[0].value = "";
+            inputs[1].value = "";
+            inputs[2].value = "";
+            inputs[3].value = "";
+        }
+
+
+        form.addEventListener("submit", handle)
+
+    </script>
+</body>
+</html>
