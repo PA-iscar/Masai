@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Loop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+
+        body {
+            font-family: 'Neonderthaw', cursive;
+            padding-left: 100px;
+        }
+
+        div {
+            font-family: 'Dongle', sans-serif;
+            font-size: 30px;
+            line-height: 20px;
+        }
+
+        img {
+            width: 75%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event Loop</h1>
+    <div>
+        <h3>Call Stack</h3>
+        <p>
+            JavaScript is a single-threaded programming language and can only do one thing at a time, it create the
+            execution contexts and pushes and pops functions onto and off the call stack.<br><br>A blocking function such as a
+            function that downloads a file from a remote server or calls an API from an external server can block all
+            interactions of the webpage and if it takes a long time to execute, the user cannot interact with the web
+            browser during the function's execution because the page hangs. For example:
+        </p>
+
+        <img src="sync.jpg" alt="">
+
+        <p>
+            In this example, the task() function emulates a time-consuming task. <br><br>The task() function is the
+            blocking function. <br>
+            The script hangs for a few seconds and creates the following output:
+        </p>
+
+        <img src="sync_result.jpg" class="result" alt="">
+
+        <p>
+            to execute the script, the JavaScript engine places the first call console.log() on top of the stack and
+            executes it.<br><br>Then, JavaScript places the task() function on top of the call stack and executes the function.
+            However, it'll take a while to complete the task() function.<br>Therefore, you'll see the message 'Download a
+            file.' a little time later. After the task() function completes, the JavaScript engine pops it off the call
+            stack. <br>
+            Finally, the JavaScript engine places the last call to the console.log('Done!') function and executes it,
+            which will be very fast.
+        </p>
+
+    </div>
+    <div>
+        <h3>WEB API</h3>
+        <p>
+            To prevent a blocking function from blocking other activities, we put in a callback function for later
+            execution. For example:
+        </p>
+
+        <img src="async.jpg" alt="">
+
+        <p>
+            In this example, you'll see the message 'Start script...' and 'Done!' immediately. And after that, you'll
+            see the message 'Download a file'.
+        </p>
+
+        <img src="async_result.jpg" alt="">
+
+        <p>
+            JavaScript runtime can do only one thing at time. However, the web browser has other components, not just
+            the JavaScript engine. <br> The setTimeout(), fetch requests, and DOM events are parts of the Web APIs of the web
+            browser and can be executed concurrently and asynchronously. <br> In our example, when you call the setTimeout()
+            function, the JavaScript engine places it on the call stack, and the Web API creates a timer that expires in
+            1 second.
+        </p>
+
+        <img src="timeout.jpg" alt="">
+    </div>
+    <div>
+        <h3>Callback Queue</h3>
+        <p>
+            After the timer expires in the WEB API, JavaScript engine places the task() function into a queue known as a
+            Callback Queue or an Event Queue.
+        </p>
+
+        <img src="queue.jpg" alt="">
+    </div>
+    <div>
+        <h3>Event Loop</h3>
+        <p>
+            The event loop is a constantly running process that monitors both the callback queue and the call stack. <br> If
+            the call stack is not empty, the event loop waits until it is empty and places the next function from the
+            callback queue to the call stack. <br> If the callback queue is empty, nothing will happen:
+        </p>
+
+        <img src="loop.jpg" alt="">
+    </div>
+</body>
+
+</html>
