@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        #form {
+            width: 500px;
+            margin: auto;
+        }
+
+        #output {
+            width: 300px;
+            height: auto;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        tr,
+        td,
+        #output div {
+            padding: 5px;
+
+        }
+
+        #output div {
+            outline: 2px solid black;
+            font-size: 18px;
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <table>
+            <tr>
+                <td>
+                    <label for="title">Title: </label>
+                </td>
+                <td>
+                    <input type="text" name="title" id="title">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="status">Status:</label>
+                </td>
+                <td>
+                    <input type="radio" name="status" id="true" value="true">
+                    <label for="true">True</label>
+                    <input type="radio" name="status" id="false" value="false">
+                    <label for="false">False</label>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit" id="addBtn">ADD</button>
+    </form>
+    <div id="output">
+
+    </div>
+    <script>
+        let doc = document.body;
+        let form = doc.querySelector("#form")
+        let addBtn = form.querySelector("#addBtn")
+        let display = doc.querySelector("#output")
+
+
+        addBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let title = form.querySelector("#title")
+            let status = form.querySelector("#true").checked
+
+            addData(title.value, status)
+        })
+
+
+
+        let url = "https://json-server-mocker-masai.herokuapp.com/tasks";
+
+
+        let showData = (data) => {
+            let len = data.length;
+            // console.log(data)
+            let cards = display.querySelectorAll(".task")
+            cards.forEach((el) => {
+                el.remove()
+            })
+            // console.log(cards)
+            for (let i = 0; i < len; i++) {
+                if (data[i].title) {
+                    let card = document.createElement("div");
+                    card.classList.add("task")
+                    card.innerText = data[i].title;
+                    card.style.color = (data[i].status) ? "lime" : "red";
+                    display.append(card)
+                }
+            }
+        }
+
+
+        let getData = () => {
+            fetch(url)
+                .then((result) => {
+                    let data = result.json();
+                    data.then((out) => {
+                        showData(out)
+                    })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+
+
+        let addData = (title, status) => {
+            if (title) {
+                let data = {};
+                data.title = title
+                data.status = status
+                data = JSON.stringify(data)
+                // console.log(data)
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: data
+                })
+                    .then((result) => {
+                        let data = result.json();
+                        data.then((out) => {
+                            // console.log(out)
+                            getData();
+                        })
+                    })
+
+            }
+        }
+
+        // fetch("https://json-server-mocker-masai.herokuapp.com/tasks/2",{
+        //     method: "DELETE"
+        // })
+        // .then(data => data.json())
+        // .then(el => console.log(el))
+
+        getData();
+    </script>
+</body>
+
+</html>
