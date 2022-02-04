@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini JS Datatype</title>
+</head>
+
+<body>
+    <section id="buttons">
+        <button id="object">Objects</button>
+        <button id="array">Arrays</button>
+        <button id="function">Functions</button>
+        <button id="string">Strings</button>
+        <button id="number">Numbers</button>
+        <button id="empty">Null</button>
+        <button id="undef">Undefined</button>
+    </section>
+    <ul id="output"></ul>
+    <script>
+        let doc = document.body
+        let sec = doc.querySelector("#buttons")
+
+        let obj = [
+            `All JavaScript values, except primitives, are objects.`,
+            `Booleans, Numbers, Strings can be objects if defined with <strong>new</strong> keyword.`,
+            `An Object is a collection of related data.`,
+            `Object properties can be accessed using '.' (Dot) notation and '[ ]' (Bracket) notation.`,
+            `Objects are complex and each object may contain any combination of primitive data-types as well as reference data-types.`
+        ];
+
+        let arr = [
+            `An array is just an object that can store multiple values at once.`,
+            `JavaScript arrays are zero-indexed.`,
+            `An array can be created using array literal or Array constructor syntax.`,
+            `An array index must be numeric.`,
+            `Array includes "length" property which returns number of elements in the array.`
+        ];
+
+        let func = [
+            `A JavaScript function is a block of code designed to perform a particular task.`,
+            `Inside a function, the arguments (the parameters) behave as local variables.`,
+            `Function arguments are the values received by the function when it is invoked.`,
+            `The code inside the function will execute when "something" invokes (calls) the function`,
+            `Function will stop executing when it reaches a return statement`
+        ];
+
+        let str = [
+            `A JavaScript string stores a series of characters like "Masai School".`,
+            `A string can be any text inside double or single quotes or backticks.`,
+            `String indexes are zero-based.`,
+            `Strings in JavaScripts can be created as objects and hence methods such as length can be used with strings`,
+            `The internal format for strings is always UTF-16, it is not tied to the page encoding.`
+        ];
+
+        let num = [
+            `Numbers are of two types Integers and Floating point numbers.`,
+            `JavaScript has only one type of number. Numbers can be written with or without decimals.`,
+            `Hence Floating point arithmetic is not always 100% accurate as the number is not as it seems in JavaScript`,
+            `The valueOf() method is used internally in JavaScript to convert Number objects to primitive values.`,
+            `Number() can be used to convert JavaScript variables to numbers.`
+        ];
+
+        let empty = [
+            `'Null' is a keyword in JavaScript that signifies 'no value' or nonexistence of any value.`,
+            `If you wish to shred a variable off its assigned value, you can simply assign 'null' to it.`,
+            `'Null' is an object with a valid value, no properties, is non-mutable.`,
+            `'typeof' returns 'object' for any null value.`,
+            `It is one of JavaScript's primitive values and is treated as falsy for boolean operations.`
+        ];
+
+        let undef = [
+            `JavaScript assigns 'undefined' to any object that has been declared but not initialized or defined.`,
+            `The return value of functions that have to but don't return a value is 'undefined'.`,
+            `'typeof' returns 'undefined' for any undefined value.`,
+            `undefined is a property of the global object. That is, it is a variable in global scope. The initial value of undefined is the primitive value undefined.`,
+            `A method or statement also returns undefined if the variable that is being evaluated does not have an assigned value.`
+        ];
+
+
+        let createUl = () => {
+            let list = document.createElement("ul")
+            list.setAttribute("id", "output")
+            document.body.append(list)
+            return list
+        }
+
+        let deleteUl = (out) => {
+            out.remove()
+        }
+
+        let display = (val) => {
+            let out = doc.querySelector("#output")
+
+            if (out) {
+                deleteUl(out)
+            }
+            out = createUl()
+
+            val.forEach(el => {
+                let li = document.createElement("li")
+                li.innerHTML = el;
+                out.append(li)
+            });
+
+        }
+
+        let showBullets = (e) => {
+            let btn = e.target.id;
+            console.log(btn)
+
+            switch (btn) {
+                case 'object':
+                    display(obj)
+                    break
+                case 'array':
+                    display(arr)
+                    break
+                case 'function':
+                    display(func)
+                    break
+                case 'string':
+                    display(str)
+                    break
+                case 'number':
+                    display(num)
+                    break
+                case 'empty':
+                    display(empty)
+                    break
+                case 'undef':
+                    display(undef)
+                    break
+            }
+        }
+
+        sec.addEventListener("click", showBullets)
+
+    </script>
+</body>
+
+</html>
