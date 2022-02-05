@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>circumference</title>
+</head>
+
+<body>
+    <span>Enter the radius of the circle</span>
+    <input type="number" id="input" onchange="circ()">
+    <br>
+    <br>
+    <span>The circumference of the circle is <span id="output"></span></span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <span>Enter the value of a and b</span>
+    <input type="number" id="a" onchange="calc()">
+    <input type="number" id="b" onchange="calc()">
+    <br>
+    <br>
+    <p>Enter a choice</p>
+    <p>1. Add</p>
+    <p>2. Subtract</p>
+    <p>3. Divide</p>
+    <p>4. Multiply</p>
+    <br>
+    <input type="number" id="choice" onchange="calc()">
+    <br>
+    <br>
+    <span>The <span id="opr"></span> of <span id="a_val"></span> and <span id="b_val"></span> is <span
+            id="a_b"></span></span>
+    <script>
+        class Circle {
+            constructor(radius) {
+                this.radius = radius
+            }
+
+            getCircumference() {
+                this.area = (2 * (3.14159) * this.radius).toFixed(4)
+                return this.area
+            }
+        }
+
+        class Calculator {
+            constructor(a, b) {
+                this.a = a
+                this.b = b
+            }
+
+            add() {
+                return this.sum = this.a + this.b
+            }
+
+            subtract() {
+                return this.difference = this.a - this.b
+            }
+
+            divide() {
+                return this.quotient = this.a / this.b
+            }
+
+            multiply() {
+                return this.product = this.a * this.b
+            }
+        }
+
+        let circ = () => {
+            let input = document.body.querySelector("#input").value
+            let output = document.body.querySelector("#output")
+            let c1 = new Circle(input)
+            output.textContent = c1.getCircumference()
+        }
+
+        let getVal = () => {
+            let a = document.body.querySelector("#a").value
+            let b = document.body.querySelector("#b").value
+            return [Number(a), Number(b)]
+        }
+
+        let calc = () => {
+            let choice = document.body.querySelector("#choice").value
+            let val = getVal()
+            let a = val[0]
+            let b = val[1]
+            let opr = document.body.querySelector("#opr");
+            let result = document.body.querySelector("#a_b");
+
+            document.body.querySelector("#a_val").textContent = a;
+            document.body.querySelector("#b_val").textContent = b;
+
+            let operation = new Calculator(a,b)
+
+            switch(choice) {
+                case '1':
+                    opr.textContent = "Sum"
+                    result.textContent = operation.add()
+                    break;
+                case '2':
+                    opr.textContent = "Difference"
+                    result.textContent = operation.subtract()
+                    break;
+                case '3':
+                    opr.textContent = "Quotient"
+                    result.textContent = operation.divide()
+                    break;
+                case '4':
+                    opr.textContent = "Product"
+                    result.textContent = operation.multiply()
+                    break;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
