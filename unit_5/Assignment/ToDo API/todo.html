@@ -35,6 +35,13 @@
             font-size: 18px;
             display: inline;
         }
+
+        #count {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 30px;
+        }
     </style>
 </head>
 
@@ -67,6 +74,10 @@
     <div id="output">
 
     </div>
+    <div id="count">
+
+    </div>
+
     <script>
         let doc = document.body;
         let form = doc.querySelector("#form")
@@ -88,7 +99,9 @@
 
 
         let showData = (data) => {
+            let count = doc.querySelector("#count")
             let len = data.length;
+            count.innerText = len;
             // console.log(data)
             let cards = display.querySelectorAll(".task")
             cards.forEach((el) => {
@@ -98,9 +111,39 @@
             for (let i = 0; i < len; i++) {
                 if (data[i].title) {
                     let card = document.createElement("div");
+
+                    let text = document.createElement("span")
+
+                    let buttons = document.createElement("span")
+                    let done = document.createElement("button")
+                    let remove = document.createElement("button")
+
                     card.classList.add("task")
-                    card.innerText = data[i].title;
+                    text.classList.add("text")
+
+                    buttons.classList.add("buttons")
+                    done.classList.add("done")
+                    remove.classList.add("remove")
+
+                    text.innerText = data[i].title;
+                    done.innerText = "Done"
+                    remove.innerText = "Remove"
+
                     card.style.color = (data[i].status) ? "lime" : "red";
+
+                    if (data[i].status)
+                        text.style.textDecoration = "line-through"
+
+                    card.style.display = "flex";
+                    card.style.justifyContent = "space-between"
+                    card.setAttribute("id", data[i].id)
+                    card.setAttribute("status", data[i].status)
+
+                    buttons.style.display = "flex"
+                    buttons.style.gap = "5px"
+
+                    buttons.append(done, remove)
+                    card.append(text, buttons)
                     display.append(card)
                 }
             }
@@ -146,13 +189,65 @@
             }
         }
 
-        // fetch("https://json-server-mocker-masai.herokuapp.com/tasks/2",{
-        //     method: "DELETE"
-        // })
-        // .then(data => data.json())
-        // .then(el => console.log(el))
+        let toggle_task = async (id, status, title) => {
+            let getStatus = () => {
+                status = (status == "true") ? false : true;
+            }
+            await getStatus();
+            await fetch(`https://json-server-mocker-masai.herokuapp.com/tasks/${id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: title,
+                    status: status
+                })
+            })
+            await getData()
+        }
+
+        let updateData = async (id, title) => {
+            await fetch(`https://json-server-mocker-masai.herokuapp.com/tasks/${id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: title,
+                    status: true
+                })
+            })
+            await getData()
+        }
+
+        let deleteData = async (id) => {
+            await fetch(`https://json-server-mocker-masai.herokuapp.com/tasks/${id}`, {
+                method: "DELETE"
+            })
+            await getData()
+        }
+
+        let done = async (t) => {
+            await updateData(t.id, t.querySelector(".text").innerText)
+            // await toggle_task(t.id, t.getAttribute("status"), t.querySelector(".text").innerText)
+        }
+
+        let rmv = async (t) => {
+            // console.log(t.id)
+            await deleteData(t.id)
+        }
+
+
+        let clickHandler = (e) => {
+            if (e.target.classList.contains("done"))
+                done(e.target.parentNode.parentNode)
+            if (e.target.classList.contains("remove"))
+                rmv(e.target.parentNode.parentNode)
+        }
 
         getData();
+        doc.addEventListener("click", clickHandler)
     </script>
 </body>
 
