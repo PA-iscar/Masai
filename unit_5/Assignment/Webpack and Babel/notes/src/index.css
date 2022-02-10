@@ -1,0 +1,15 @@
+.image {
+    width: 100px;
+}
+
+#notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.note {
+    border: 1px solid black;
+    width: 300px;
+    padding: 20px;
+}
