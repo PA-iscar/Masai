@@ -4,7 +4,7 @@ import Counter from "./components/counter";
 
 
 ReactDOM.render(
-    <Counter />,
+    <Counter value = "0" />,
     document.querySelector("#root")
 
 )

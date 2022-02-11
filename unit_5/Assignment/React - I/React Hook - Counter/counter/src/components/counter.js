@@ -1,7 +1,7 @@
 import React from "react";
 
-const Counter = () => {
-  const [counter, setCounter] = React.useState(3);
+const Counter = ({value}) => {
+  const [counter, setCounter] = React.useState(Number(value));
 
   const handleChange = (val) => setCounter(counter + val);
   const double = () => setCounter(counter * 2);
