@@ -6,7 +6,6 @@ const GroceryList = (props) => {
   const { value } = props;
 
   let removeItem = (e) => {
-    const {id} = e.target.parentNode
     e.target.parentNode.remove()
   }
 
