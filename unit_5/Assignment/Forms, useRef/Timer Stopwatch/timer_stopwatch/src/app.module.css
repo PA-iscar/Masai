@@ -1,0 +1,72 @@
+.blBg {
+    position: relative;
+    background-color: #202124;
+    width: 600px;
+    height: 200px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #666668;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    border-bottom: 1px solid #666668;
+}
+
+.btn {
+    width: 50%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    color: #8c8c91;
+    cursor: pointer;
+    /* border-radius: 10px; */
+}
+
+.addBtn {
+    background-color: #8AB4F8;
+    border: 1px solid #666668;
+    height: 25px;
+    width: 50px;
+    cursor: cell;
+}
+
+.isActive {
+    color: #8AB4F8;
+    border-bottom: 2px solid #8AB4F8;
+    cursor: default;
+}
+
+.start {
+    background-color: #8AB4F8;
+    border-radius: 0px 0px 0px 10px;
+    color: black;
+}
+
+.watch {
+    padding: 30px;
+    font-size: 40px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.inputs {
+    border-bottom: 1px solid #8AB4F8;
+}
+
+.input {
+    background-color: #202124;
+    width: 40px;
+    font-size: 30px;
+    margin: 0px 10px;
+    border: none;
+    color: #666668;
+}
+
+.footer {
+    border-top: 1px solid #666668;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+}
