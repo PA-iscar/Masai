@@ -29,7 +29,7 @@ function App() {
     }
     const stopStarted = setInterval(() => {
       setStopwatchTime((prev) => prev + 1);
-    }, 1000);
+    }, 10);
     if (!isStopwatchStarted) {
       clearInterval(stopStarted);
     }

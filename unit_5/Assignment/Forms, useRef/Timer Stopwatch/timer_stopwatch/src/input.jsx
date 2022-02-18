@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Styles from "./app.module.css";
 
-const Input = ({ setNewTime, setGetInput }) => {
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+const Input = ({ setNewTime, setGetInput, time }) => {
+  const [hours, setHours] = useState(() => Math.floor(time / 3600));
+  const [minutes, setMinutes] = useState(() => Math.floor((time % 3600) / 60));
+  const [seconds, setSeconds] = useState(() => Math.floor((time % 3600) % 60));
 
   useEffect(() => {
-    setNewTime(hours * 60 + minutes * 60 + seconds);
-  }, [hours, minutes, seconds, setNewTime, setGetInput]);
+    setNewTime(Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds));
+  }, [hours, minutes, seconds, setNewTime]);
 
   const handleChange = (e) => {
     if (e.target.id === "hours") {
       if (
         e.target.value >= 0 &&
-        e.target.value < 25 &&
+        e.target.value < 24 &&
         e.target.value.length <= 2
       ) {
         setHours(e.target.value);

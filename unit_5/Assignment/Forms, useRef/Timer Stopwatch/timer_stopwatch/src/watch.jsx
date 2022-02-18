@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Styles from "./app.module.css";
+import Clock from "./clock";
 import Input from "./input";
 
 const Watch = ({ value, time, setTime, isStarted, setIsStarted }) => {
@@ -24,15 +25,16 @@ const Watch = ({ value, time, setTime, isStarted, setIsStarted }) => {
   return (
     <div className={`${Styles.watch}`} onClick={editTime}>
       {isStarted ? (
-        time
+        <Clock time={time} value={value} />
       ) : getInput ? (
         <Input
           setNewTime={setNewTime}
           isStarted={isStarted}
           setGetInput={setGetInput}
+          time={time}
         />
       ) : (
-        time
+        <Clock time={time} value={value} />
       )}
     </div>
   );
