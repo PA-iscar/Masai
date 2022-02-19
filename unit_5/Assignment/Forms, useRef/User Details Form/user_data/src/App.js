@@ -1,18 +1,12 @@
-import { useState, useEffect } from "react";
 import Form from "./components/form";
 import Table from "./components/table";
-import DataApi from "./components/dataApi";
-
+import React, { useState } from "react";
 function App() {
-  const [userData, setUserData] = useState([]);
-  useEffect(() => {
-    const data = DataApi({ method: "GET" });
-    data.then((d) => setUserData(d));
-  });
+  const [refresh, setRefresh] = useState(true);
   return (
     <>
-      <Form />
-      <Table userData={userData} />
+      <Form setRefresh={setRefresh} />
+      <Table refresh={refresh} setRefresh={setRefresh} />
     </>
   );
 }

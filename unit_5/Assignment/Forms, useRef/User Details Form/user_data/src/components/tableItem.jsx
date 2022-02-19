@@ -1,6 +1,12 @@
 import React from "react";
+import DataApi from "./dataApi";
 
-const TableItem = ({ data }) => {
+const TableItem = ({ data, setRefresh }) => {
+  const handleRemove = () => {
+    // console.log(data.id, "delete");
+    DataApi({ data: data.id, method: "DELETE" });
+    setRefresh((prev) => !prev);
+  };
   return (
     <tr>
       <td>{data.name}</td>
@@ -10,6 +16,9 @@ const TableItem = ({ data }) => {
       <td>{data.marital ? "Married" : "Single"}</td>
       <td>{data.address}</td>
       <td>{data.profile}</td>
+      <td>
+        <button onClick={handleRemove}>Delete</button>
+      </td>
     </tr>
   );
 };

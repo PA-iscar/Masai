@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import DataApi from "./dataApi";
 
-const Form = () => {
+const Form = ({ setRefresh }) => {
   const name = useRef();
   const age = useRef();
   const address = useRef();
@@ -52,7 +52,7 @@ const Form = () => {
       !age.current.value ||
       !address.current.value ||
       department.current.value === "none" ||
-      !salary.current.value ||
+      salary.current.value ||
       !profile.current.value
     ) {
       setIsValid(false);
@@ -60,10 +60,10 @@ const Form = () => {
       setIsValid(true);
       const data = {
         name: name.current.value,
-        age: age.current.value,
+        age: Number(age.current.value),
         address: address.current.value,
         department: department.current.value,
-        salary: salary.current.value,
+        salary: Number(salary.current.value),
         marital: marital.current.checked,
         profile: profile.current.value,
       };
@@ -77,6 +77,7 @@ const Form = () => {
       setShowImg(false);
       // setUserData((prev) => [...prev, data]);
       DataApi({ data, method: "POST" });
+      setRefresh((prev) => !prev);
     }
   };
   return (
@@ -117,8 +118,8 @@ const Form = () => {
               <td>
                 <select name="department" id="department" ref={department}>
                   <option value="none">Select one</option>
-                  <option value="front">Front End</option>
-                  <option value="back">Back End</option>
+                  <option value="frontend">Front End</option>
+                  <option value="backend">Back End</option>
                 </select>
               </td>
             </tr>
