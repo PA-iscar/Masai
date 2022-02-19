@@ -52,7 +52,7 @@ const Form = ({ setRefresh }) => {
       !age.current.value ||
       !address.current.value ||
       department.current.value === "none" ||
-      salary.current.value ||
+      !salary.current.value ||
       !profile.current.value
     ) {
       setIsValid(false);
