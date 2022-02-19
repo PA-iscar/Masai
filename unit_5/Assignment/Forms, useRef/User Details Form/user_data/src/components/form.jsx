@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
+import DataApi from "./dataApi";
 
-const Form = ({ setUserData }) => {
+const Form = () => {
   const name = useRef();
   const age = useRef();
   const address = useRef();
@@ -29,7 +30,7 @@ const Form = ({ setUserData }) => {
 
   const imageHandler = (e) => {
     if (profile.current.value) {
-      console.log("show image");
+      // console.log("show image");
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.readyState === 2) {
@@ -39,7 +40,7 @@ const Form = ({ setUserData }) => {
       reader.readAsDataURL(e.target.files[0]);
       setShowImg(true);
     } else {
-      console.log("remove image");
+      // console.log("remove image");
       setShowImg(false);
     }
   };
@@ -66,7 +67,16 @@ const Form = ({ setUserData }) => {
         marital: marital.current.checked,
         profile: profile.current.value,
       };
-      setUserData((prev) => [...prev, data]);
+      name.current.value = "";
+      age.current.value = "";
+      address.current.value = "";
+      department.current.value = "none";
+      salary.current.value = "";
+      marital.current.checked = true;
+      profile.current.value = "";
+      setShowImg(false);
+      // setUserData((prev) => [...prev, data]);
+      DataApi({ data, method: "POST" });
     }
   };
   return (

@@ -18,7 +18,7 @@ const Table = ({ userData }) => {
         </thead>
         <tbody>
           {userData.map((data) => {
-            return <TableItem data={data} key={data.name} />;
+            return <TableItem data={data} key={data.id} />;
           })}
         </tbody>
       </table>
