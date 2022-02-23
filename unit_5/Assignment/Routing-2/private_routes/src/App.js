@@ -1,7 +1,11 @@
+import Navbar from "./Components/Navbar";
+import Rout from "./Pages/Routes";
+
 function App() {
   return (
     <>
-      <div>App</div>
+      <Navbar />
+      <Rout />
     </>
   );
 }
