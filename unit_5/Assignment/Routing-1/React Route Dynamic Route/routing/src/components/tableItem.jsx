@@ -8,7 +8,9 @@ export const TableItem = ({ value }) => {
     <tr>
       <td>{name}</td>
       <td>{price}</td>
-      <td><Link to={val}>more details</Link></td>
+      <td>
+        <Link to={val}>more details</Link>
+      </td>
     </tr>
   );
 };

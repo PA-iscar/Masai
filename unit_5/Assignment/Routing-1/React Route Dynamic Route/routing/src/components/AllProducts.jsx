@@ -14,7 +14,10 @@ export const AllProducts = () => {
       },
     })
       .then((res) => res.json())
-      .then((d) => { setIsLoaded(true);setData(d)});
+      .then((d) => {
+        setIsLoaded(true);
+        setData(d);
+      });
   }, []);
 
   return (
@@ -31,16 +34,14 @@ export const AllProducts = () => {
       <br />
       <table border="1px">
         <tbody>
-          {isLoaded && data.map((el) => (
-            <TableItem value={el} key={el.id} />
-          ))}
+          {isLoaded && data.map((el) => <TableItem value={el} key={el.id} />)}
         </tbody>
       </table>
-          <Switch>
-              <Route path="/products/:id">
-                <ProductItem />
-              </Route>
-          </Switch>
+      <Switch>
+        <Route path="/products/:id">
+          <ProductItem />
+        </Route>
+      </Switch>
     </div>
   );
 };

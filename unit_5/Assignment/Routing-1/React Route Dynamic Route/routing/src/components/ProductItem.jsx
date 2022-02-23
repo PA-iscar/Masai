@@ -26,12 +26,16 @@ export const ProductItem = () => {
         textAlign: "center",
       }}
     >
-      {data.name?<div>
-        <br />
-        <div>Product Name: {data.name}</div>
-        <br />
-        <div>Product Price: {data.price}</div>
-      </div>:<h2>Product does not exist</h2>}
+      {data.name ? (
+        <div>
+          <br />
+          <div>Product Name: {data.name}</div>
+          <br />
+          <div>Product Price: {data.price}</div>
+        </div>
+      ) : (
+        <h2>Product does not exist</h2>
+      )}
     </div>
   );
 };
