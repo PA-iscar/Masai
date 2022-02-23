@@ -1,22 +1,31 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import Products from "./components/Products";
-import Navbar from "./components/Navbar";
-import ProductItem from "./components/ProductItem";
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import { AllProducts } from "./components/AllProducts";
+import { Home } from "./components/Home";
+import { ProductItem } from "./components/ProductItem";
 
 function App() {
   return (
     <>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="products" element={<Products />}>
-            <Route path=":id" element={<ProductItem />} />
-          </Route>
-        </Routes>
-      </div>
+      <BrowserRouter>
+        <div>
+          <div style={{ display: "flex", gap: "20px" }}>
+            <Link to="/">Home</Link>
+            <Link to="/products">All products</Link>
+          </div>
+
+          <Switch>
+            <Route path="/products">
+              <AllProducts />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route>
+              <h1>404: Route not found</h1>
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const Home = () => {
+export const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
-
-export default Home
+    <div style={{ display: "flex", width: "100vw", justifyContent: "center" }}>
+      <div>Home</div>
+    </div>
+  );
+};
