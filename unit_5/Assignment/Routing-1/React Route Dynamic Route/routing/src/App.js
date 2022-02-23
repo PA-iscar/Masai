@@ -1,7 +1,6 @@
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 import { AllProducts } from "./components/AllProducts";
 import { Home } from "./components/Home";
-import { ProductItem } from "./components/ProductItem";
 
 function App() {
   return (
