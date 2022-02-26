@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin, userLogout } from "../Redux/action";
+import { userLogin, userLogout } from "../Redux/auth/auth.actions";
 import Navbar from "./Navbar";
 
 const Login = () => {
-  const isAuth = useSelector((state) => state.isAuth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

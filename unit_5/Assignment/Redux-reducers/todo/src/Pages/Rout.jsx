@@ -7,7 +7,7 @@ import ErrorPage from "./ErrorPage";
 import LoginPage from "./LoginPage";
 import { useSelector } from "react-redux";
 const Rout = () => {
-  const isAuth = useSelector((state) => state.isAuth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isAuth) {

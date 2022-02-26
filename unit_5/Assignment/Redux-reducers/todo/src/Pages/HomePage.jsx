@@ -7,7 +7,7 @@ import { TodoList } from "../Components/TodoList";
 import Total from "../Components/Total";
 
 const HomePage = () => {
-  const isAuth = useSelector((state) => state.isAuth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isAuth) {

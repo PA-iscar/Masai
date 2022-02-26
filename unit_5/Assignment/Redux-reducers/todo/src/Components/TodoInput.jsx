@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../Redux/action";
+import { addTodo } from "../Redux/todo/todo.actions";
 import { putData } from "./DataApi";
 const TodoInput = () => {
   const [title, setTitle] = useState("");

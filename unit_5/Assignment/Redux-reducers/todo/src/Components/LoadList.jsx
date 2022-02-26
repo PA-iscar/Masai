@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { reloadList } from "../Redux/action";
+import { reloadList } from "../Redux/todo/todo.actions";
 import { getData } from "./DataApi";
 
 const Load = () => {

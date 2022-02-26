@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeTodo, toggleStatus } from "../Redux/action";
+import { removeTodo, toggleStatus } from "../Redux/todo/todo.actions";
 import { editData, removeData } from "./DataApi";
 
 const TodoListItem = ({ item }) => {
