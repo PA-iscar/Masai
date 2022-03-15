@@ -1,0 +1,15 @@
+{
+  "name": "creating-an-options-menu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.1",
+    "inquirer-loop": "^0.3.0"
+  }
+}
