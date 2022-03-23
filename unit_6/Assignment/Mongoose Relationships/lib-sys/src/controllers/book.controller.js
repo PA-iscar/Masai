@@ -3,13 +3,27 @@ const Book = require("../models/book.model");
 const crudController = require("./crud.controller");
 const router = express.Router();
 
-const controller = crudController(Book)
+const controller = crudController(Book);
 
 //* Create
 router.post("/", controller.post);
 
 //* Read Many
-router.get("/", controller.getAll);
+router.get("/", async (req, res) => {
+  const { isCheckedOut,section, authors } = req.query;
+  let criteria = {};
+  if (isCheckedOut) {
+    criteria.isCheckedOut = isCheckedOut;
+  }
+  if (authors) {
+    criteria.authors = authors;
+  }
+  if (section) {
+    criteria.section = section;
+  }
+  const items = await Book.find(criteria);
+  res.status(200).json(items);
+});
 
 //* Read One
 router.get("/:id", controller.getOne);
