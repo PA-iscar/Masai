@@ -1,41 +1,23 @@
 const express = require("express");
 const Author = require("../models/author.model");
+const crudController = require("./crud.controller");
 const router = express.Router();
 
+const controller = crudController(Author)
+
 //* Create
-router.post("", async (req, res) => {
-  const createdAuthor = await Author.create(req.body);
-  res.status(201).json(createdAuthor);
-});
+router.post("/", controller.post);
 
 //* Read Many
-router.get("", async (req, res) => {
-  const authors = await Author.find();
-  res.status(200).json(authors);
-});
+router.get("/", controller.getAll);
 
 //* Read One
-router.get("/:id", async (req, res) => {
-  const author = await Author.findById(req.params.id);
-  res.status(200).json(author);
-});
+router.get("/:id", controller.getOne);
 
 //* Update
-router.patch("/:id", async (req, res) => {
-  const updatedAuthor = await Author.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
-    }
-  );
-  res.status(200).json(updatedAuthor);
-});
+router.patch("/:id", controller.updateOne);
 
 //* Delete
-router.delete("/:id", async (req, res) => {
-  const deletedAuthor = await Author.findByIdAndDelete(req.params.id);
-  res.status(200).json(deletedAuthor);
-});
+router.delete("/:id", controller.deleteOne);
 
 module.exports = router;
