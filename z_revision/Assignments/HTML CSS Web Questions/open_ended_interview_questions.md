@@ -15,7 +15,7 @@
 
 1. What are you most excited about?
    <br/>
-   Ans: The thing that excites me most is the fact that Web Development is a new field and there is still a lot to create and a lot to discover. And we live in an era that offers a lot of hands-on learning opportunities and our generation will get to experience something revolutionary and no one predict what it could be. Once you learn how to code, you have access to a powerful system for solving problems. The learning never stops, either. There is always a new coding technique to learn that will help you solve even harder problems. There is always an existing solution that you can enhance.
+   Ans: The thing that excites me most is the fact that Web Development is a new field and there is still a lot to create and a lot to discover. And we live in an era that offers a lot of hands-on learning opportunities and our generation will get to experience something revolutionary and no one can predict what it could be. Once you learn how to code, you have access to a powerful system for solving problems. The learning never stops, either. There is always a new coding technique to learn that will help you solve even harder problems. There is always an existing solution that you can enhance.
    <br/>
 
 1. Why do coding standards matter? What are some patterns you follow?
