@@ -29,50 +29,50 @@
    <br/>
    Ans:
 
-```JS
-    let str = "masai";
-    str = str.split("").reverse().join("");
-    console.log(str);
+   ```JS
+      let str = "masai";
+      str = str.split("").reverse().join("");
+      console.log(str);
 
-```
+   ```
 
-   <br/>
-   b. iteratively
-   <br/>
-   Ans:
+      <br/>
+      b. iteratively
+      <br/>
+      Ans:
 
-```JS
-    const reverseString = (str) => {
-        let reversed = "";
-        for (const c of str) {
-            reversed = c + reversed;
-        }
-        return reversed;
-    };
+   ```JS
+      const reverseString = (str) => {
+         let reversed = "";
+         for (const c of str) {
+               reversed = c + reversed;
+         }
+         return reversed;
+      };
 
-    let str = "masai";
-    str = reverseString(str);
-    console.log(str)
+      let str = "masai";
+      str = reverseString(str);
+      console.log(str)
 
-```
+   ```
 
-   <br/>
-   c. recursively
-   <br/>
-   Ans:
+      <br/>
+      c. recursively
+      <br/>
+      Ans:
 
-```JS
-    function reverse(str) {
-    if (str === "") {
-        return "";
-    } else {
-        return reverse(str.substr(1)) + str.charAt(0);
-    }
-    }
-    let str = "masai";
-    str = reverse(str);
-    console.log(str);
-```
+   ```JS
+      function reverse(str) {
+      if (str === "") {
+         return "";
+      } else {
+         return reverse(str.substr(1)) + str.charAt(0);
+      }
+      }
+      let str = "masai";
+      str = reverse(str);
+      console.log(str);
+   ```
 
    <br/>
 
